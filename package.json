@@ -36,6 +36,7 @@
   "engines": {
     "node": ">=14.13"
   },
+  "packageManager": "^npm@9.0.0",
   "devDependencies": {
     "@commitlint/cli": "17.6.5",
     "@commitlint/config-conventional": "17.6.5",
