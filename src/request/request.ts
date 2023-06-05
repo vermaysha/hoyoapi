@@ -7,7 +7,7 @@ import type {
   HTTPOptions,
   HTTPQueryParams,
   HTTPResponse,
-} from './request.inteface.js'
+} from './request.inteface'
 
 /**
  * Class for handling HTTP requests with customizable headers, body, and parameters.

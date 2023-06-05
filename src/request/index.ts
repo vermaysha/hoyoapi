@@ -1,2 +1,2 @@
-export * from './request.js'
-export type * from './request.inteface.js'
+export * from './request'
+export type * from './request.inteface'
