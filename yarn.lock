@@ -32,12 +32,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:17.5.1":
-  version: 17.5.1
-  resolution: "@commitlint/cli@npm:17.5.1"
+"@commitlint/cli@npm:17.6.5":
+  version: 17.6.5
+  resolution: "@commitlint/cli@npm:17.6.5"
   dependencies:
     "@commitlint/format": ^17.4.4
-    "@commitlint/lint": ^17.4.4
+    "@commitlint/lint": ^17.6.5
     "@commitlint/load": ^17.5.0
     "@commitlint/read": ^17.5.1
     "@commitlint/types": ^17.4.4
@@ -48,7 +48,7 @@ __metadata:
     yargs: ^17.0.0
   bin:
     commitlint: cli.js
-  checksum: 2bdd26b3215796dccb16b0d7459d3b0db7f6324800aa73b97a8cdf79b77f3691d85ee88f37fa6cf20c97ac664f31dcb6ad7aef1da3c3b32d7bb12f18d49a37f2
+  checksum: acc57bdb732bf308c65e01a13d6b42f6f5f1a4dc40b2e743a5c0a4e797423fa8a2c9b4cc5377d9e6df47c06dc17e190081f7b7c0361c31de22dcf1a05619fa8a
   languageName: node
   linkType: hard
 
@@ -112,7 +112,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/lint@npm:^17.4.4":
+"@commitlint/lint@npm:^17.6.5":
   version: 17.6.5
   resolution: "@commitlint/lint@npm:17.6.5"
   dependencies:
@@ -1625,7 +1625,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "hoyoapi@workspace:."
   dependencies:
-    "@commitlint/cli": 17.5.1
+    "@commitlint/cli": 17.6.5
     "@commitlint/config-conventional": 17.6.5
     "@types/eslint": latest
     "@types/node": 18.15.11
