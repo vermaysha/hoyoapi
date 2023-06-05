@@ -52,12 +52,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:17.4.4":
-  version: 17.4.4
-  resolution: "@commitlint/config-conventional@npm:17.4.4"
+"@commitlint/config-conventional@npm:17.6.5":
+  version: 17.6.5
+  resolution: "@commitlint/config-conventional@npm:17.6.5"
   dependencies:
     conventional-changelog-conventionalcommits: ^5.0.0
-  checksum: 679d92509fe6e53ee0cc4202f8069d88360c4f9dbd7ab74114bb28278a196da517ef711dfe69893033a66e54ffc29e8df2ccf63cfd746a89c82a053949473c4b
+  checksum: f2c637a9935044d6dc800eabbb0e032354afb35a7c0dd65d37115320a0fbcf4586ad769647039d0d9347988182213d7ee53339df2af9b2c8a51209ab0225366f
   languageName: node
   linkType: hard
 
@@ -1581,7 +1581,7 @@ __metadata:
   resolution: "hoyoapi@workspace:."
   dependencies:
     "@commitlint/cli": 17.5.1
-    "@commitlint/config-conventional": 17.4.4
+    "@commitlint/config-conventional": 17.6.5
     "@types/eslint": latest
     "@types/node": 18.15.11
     "@types/prettier": latest
@@ -3036,17 +3036,17 @@ __metadata:
 
 "typescript@patch:typescript@5.0.2#~builtin<compat/typescript>":
   version: 5.0.2
-  resolution: "typescript@patch:typescript@npm%3A5.0.2#~builtin<compat/typescript>::version=5.0.2&hash=b5f058"
+  resolution: "typescript@patch:typescript@npm%3A5.0.2#~builtin<compat/typescript>::version=5.0.2&hash=85af82"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 0411be9e19bf6a547d574b3261fa8598f55a5243123f2a50a79b0dc15a017abbf541f15b8b43331294e409cc978e548ac5ae4e0c5b98ba5ae98029304de047be
+  checksum: b63cb742fbb9aeb3085e002ad8f10d5fd963606aa4d6b3b65b4e76c396ff09739f03b5dbae08e1698c3bce9d5619d3f67aeb7ee470ed4016bd345b3cfe37b54a
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^4.6.4 || ^5.0.0#~builtin<compat/typescript>":
   version: 5.1.3
-  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=77c9e2"
+  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=85af82"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
