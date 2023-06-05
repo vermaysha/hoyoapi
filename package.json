@@ -2,7 +2,15 @@
   "name": "hoyoapi",
   "version": "1.0.0-alpha",
   "description": "HoYoAPI is an unofficial API Wrapper library developed to facilitate communication with the official HoYoLab API.",
-  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/esm/index.js",
   "scripts": {
     "prepare": "husky install",
     "format": "prettier . -w",
