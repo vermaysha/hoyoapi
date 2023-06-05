@@ -1,62 +1,52 @@
-import { exec } from 'child_process'
-import { mkdirSync, rmSync, writeFileSync } from 'fs'
-
+import { execSync } from 'child_process'
+import { buildSync } from 'esbuild';
+import { rmSync, writeFileSync } from 'fs'
+import glob from 'tiny-glob'
 ;(async () => {
+  // Cleaning dist dir
+  console.log('Cleaning dist directory')
   rmSync('dist', {
     force: true,
     recursive: true,
   })
-  mkdirSync('dist/cjs', {
-    recursive: true
+
+
+  // Generate entry-points for cjs compatibility
+  const target = ['ES2022', 'node14.17']
+  const entryPoints = await glob('./src/**/*.ts')
+
+  console.log('Building dist for node (cjs)...')
+  buildSync({
+    entryPoints,
+    outdir: './dist/cjs',
+    bundle: false,
+    sourcemap: false,
+    minify: false,
+    format: 'cjs',
+    platform: 'node',
+    target
   })
-  mkdirSync('dist/esm', {
-    recursive: true
-  })
-
-  exec('tsc --module commonjs --outDir ./dist/cjs/', (err, stdout, stderr) => {
-    if (err) {
-      console.error(err)
-    }
-
-    if (stderr) {
-      console.error(stderr)
-    }
-
-    console.info('CJS Build: Successfully')
-  })
-
-  exec('tsc --module esnext --outDir ./dist/esm/', (err, stdout, stderr) => {
-    if (err) {
-      console.error(err)
-    }
-
-    if (stderr) {
-      console.error(stderr)
-    }
-
-    console.info('ESM Build: Successfully')
-  })
-
-  exec(
-    'tsc --declaration --emitDeclarationOnly --declarationDir ./dist/types/',
-    (err, stdout, stderr) => {
-      if (err) {
-        console.error(err)
-      }
-
-      if (stderr) {
-        console.error(stderr)
-      }
-
-      console.info('Declaration Build: Successfully')
-    },
-  )
-
   writeFileSync('./dist/cjs/package.json', '{"type": "commonjs"}', {
     flag: 'w',
   })
 
+  console.log('Building dist for node type=module (esm)...');
+  buildSync({
+    entryPoints,
+    outdir: './dist/esm',
+    sourcemap: false,
+    minify: false,
+    splitting: false,
+    format: 'esm',
+    target,
+    outExtension: {
+      '.js': '.mjs'
+    }
+  })
   writeFileSync('./dist/esm/package.json', '{"type": "module"}', {
     flag: 'w',
   })
+
+  console.log('Generating typescript declaration ...')
+  execSync('tsc --declaration --emitDeclarationOnly --declarationDir ./dist/types/')
 })()
