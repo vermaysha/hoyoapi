@@ -1,0 +1,54 @@
+{
+  "name": "hoyoapi",
+  "version": "1.0.0-alpha",
+  "description": "HoYoAPI is an unofficial API Wrapper library developed to facilitate communication with the official HoYoLab API.",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier . -w",
+    "lint": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wavyflow/hoyoapi.git"
+  },
+  "keywords": [
+    "hoyolab-api",
+    "hoyoverse-api",
+    "genshin-api",
+    "honkai-api"
+  ],
+  "author": "Ashary Vermaysha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wavyflow/hoyoapi/issues"
+  },
+  "homepage": "https://github.com/wavyflow/hoyoapi#readme",
+  "lint-staged": {
+    "**/*.(ts,js)": [
+      "npm run lint",
+      "npm run format"
+    ]
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "engines": {
+    "node": ">=14.13"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.5.1",
+    "@commitlint/config-conventional": "17.4.4",
+    "@types/eslint": "latest",
+    "@types/node": "18.15.11",
+    "@types/prettier": "latest",
+    "@typescript-eslint/eslint-plugin": "5.56.0",
+    "@typescript-eslint/parser": "5.56.0",
+    "eslint": "8.37.0",
+    "eslint-config-prettier": "8.8.0",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.0",
+    "prettier": "2.8.7",
+    "typescript": "5.0.2"
+  }
+}
