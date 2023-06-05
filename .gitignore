@@ -1,2 +1,4 @@
 node_modules
 hoyoapi-*.tgz
+dist
+test.ts
