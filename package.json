@@ -44,7 +44,7 @@
     "dist/**/*"
   ],
   "engines": {
-    "node": ">=14.13"
+    "node": ">=8.17"
   },
   "packageManager": "^npm@9.0.0",
   "devDependencies": {

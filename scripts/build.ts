@@ -12,7 +12,7 @@ import glob from 'tiny-glob'
 
 
   // Generate entry-points for cjs compatibility
-  const target = ['ES2022', 'node14.17']
+  const target = ['ESNext', 'node8.17']
   const entryPoints = await glob('./src/**/*.ts')
 
   console.log('Building dist for node (cjs)...')
@@ -32,13 +32,17 @@ import glob from 'tiny-glob'
 
   console.log('Building dist for node type=module (esm)...');
   buildSync({
-    entryPoints,
+    entryPoints: [
+      './src/index.ts'
+    ],
     outdir: './dist/esm',
+    bundle: true,
     sourcemap: false,
     minify: false,
-    splitting: false,
+    splitting: true,
     format: 'esm',
     target,
+    platform: 'node',
     outExtension: {
       '.js': '.mjs'
     }
