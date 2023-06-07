@@ -1,14 +1,14 @@
-import { GamesEnum } from '@/client/hoyolab'
-import { LanguageEnum } from '@/language'
-import { HTTPRequest } from '@/request'
-import { DAILY_CLAIM_API, DAILY_INFO_API, DAILY_REWARD_API } from '@/routes'
+import { GamesEnum } from '../../client/hoyolab'
+import { LanguageEnum } from '../../language'
+import { HTTPRequest } from '../../request'
+import { DAILY_CLAIM_API, DAILY_INFO_API, DAILY_REWARD_API } from '../../routes'
 import {
   IDailyClaim,
   IDailyInfo,
   IDailyReward,
   IDailyRewards,
 } from './daily.interface'
-import { HoyoAPIError } from '@/error'
+import { HoyoAPIError } from '../../error'
 
 /**
  * DailyModule class provides methods to interact with Genshin Impact's daily module endpoints.

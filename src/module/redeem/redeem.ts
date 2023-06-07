@@ -1,9 +1,9 @@
-import { GamesEnum } from '@/client/hoyolab'
-import { LanguageEnum } from '@/language'
-import { HTTPRequest } from '@/request'
+import { GamesEnum } from '../../client/hoyolab'
+import { LanguageEnum } from '../../language'
+import { HTTPRequest } from '../../request'
 import { IRedeemCode } from './redeem.interface'
-import { HoyoAPIError } from '@/error'
-import { REDEEM_CLAIM_API } from '@/routes'
+import { HoyoAPIError } from '../../error'
+import { REDEEM_CLAIM_API } from '../../routes'
 
 /**
  * Class representing the Redeem module for Genshin Impact's Hoyolab API.

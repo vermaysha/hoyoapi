@@ -1,8 +1,8 @@
-import { Cookie, ICookie } from '@/cookie'
-import { HoyoAPIError } from '@/error'
-import { Language, LanguageEnum } from '@/language'
-import { HTTPRequest } from '@/request'
-import { GAME_RECORD_CARD_API, USER_GAMES_LIST } from '@/routes'
+import { Cookie, ICookie } from '../../cookie'
+import { HoyoAPIError } from '../../error'
+import { Language, LanguageEnum } from '../../language'
+import { HTTPRequest } from '../../request'
+import { GAME_RECORD_CARD_API, USER_GAMES_LIST } from '../../routes'
 import {
   GamesEnum,
   IGame,

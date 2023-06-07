@@ -1,4 +1,4 @@
-import { HoyoAPIError } from '@/error'
+import { HoyoAPIError } from '../../error'
 import { GenshinRegion, GenshinRegionKeyType } from './gi.interface'
 
 /**
