@@ -81,18 +81,24 @@ export class Cookie {
       cookie.accountId = cookie.ltuid
     }
 
-    const cookies = Object.entries(cookie).map(([key, value]) => {
-      if (value) {
-        return undefined
-      }
+    const cookies = Object.entries(cookie)
+      .map(([key, value]) => {
+        if (value) {
+          return undefined
+        }
 
-      if (['cookieToken', 'accountId', 'cookieTokenV2', 'accountIdV2'].includes(key)) {
-        key = toSnakeCase(key)
-      }
-      return `${key}=${value}`
-    }).filter((val) => {
-      return val !== undefined
-    })
+        if (
+          ['cookieToken', 'accountId', 'cookieTokenV2', 'accountIdV2'].includes(
+            key,
+          )
+        ) {
+          key = toSnakeCase(key)
+        }
+        return `${key}=${value}`
+      })
+      .filter((val) => {
+        return val !== undefined
+      })
 
     return cookies.join('; ')
   }
