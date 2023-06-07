@@ -9,6 +9,7 @@ export const DEFAULT_REFERER = 'https://hoyolab.com'
 
 /* HoYoLab API Endpoint */
 export const USER_GAMES_LIST = `${ACCOUNT_API}/account/binding/api/getUserGameRolesByCookieToken`
+export const GAME_RECORD_CARD_API = `${BBS_API}/game_record/card/wapi/getGameRecordCard`
 
 const getEventName = (game: GamesEnum) => {
   if (game == GamesEnum.GENSHIN_IMPACT) {

@@ -2,10 +2,11 @@ import { Cookie, ICookie } from '@/cookie'
 import { HoyoAPIError } from '@/error'
 import { Language, LanguageEnum } from '@/language'
 import { HTTPRequest } from '@/request'
-import { USER_GAMES_LIST } from '@/routes'
+import { GAME_RECORD_CARD_API, USER_GAMES_LIST } from '@/routes'
 import {
   GamesEnum,
   IGame,
+  IGameRecordCard,
   IGamesList,
   IHoyolabOptions,
 } from './hoyolab.interface'
@@ -120,5 +121,22 @@ export class Hoyolab {
     return games.reduce((first, second) => {
       return second.level > first.level ? second : first
     })
+  }
+
+  /**
+   * Retrieves the game record card
+   *
+   * @async
+   * @returns {Promise<IGameRecordCard>} The game account.
+   */
+  async gameRecordCard() {
+    this.request.setQueryParams({
+      uid:
+        this.cookie.ltuid || this.cookie.accountId || this.cookie.accountIdV2,
+    })
+
+    const res: any = await this.request.send(GAME_RECORD_CARD_API)
+
+    return res.data.list as IGameRecordCard
   }
 }
