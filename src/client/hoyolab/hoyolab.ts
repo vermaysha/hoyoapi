@@ -2,7 +2,7 @@ import { Cookie, ICookie } from '@/cookie'
 import { HoyoAPIError } from '@/error'
 import { Language, LanguageEnum } from '@/language'
 import { HTTPRequest } from '@/request'
-import { USER_GAMES_LIST } from '@/routes/routes'
+import { USER_GAMES_LIST } from '@/routes'
 import {
   GamesEnum,
   IGame,

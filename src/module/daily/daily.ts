@@ -5,7 +5,7 @@ import {
   DAILY_CLAIM_API,
   DAILY_INFO_API,
   DAILY_REWARD_API,
-} from '@/routes/routes'
+} from '@/routes'
 import {
   IDailyClaim,
   IDailyInfo,

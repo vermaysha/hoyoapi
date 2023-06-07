@@ -4,7 +4,7 @@ import { DailyModule } from '@/module/daily'
 import { RedeemModule } from '@/module/redeem'
 import { HTTPRequest } from '@/request'
 import { IHsrOptions } from './hsr.interface'
-import { DEFAULT_REFERER } from '@/routes/routes'
+import { DEFAULT_REFERER } from '@/routes'
 import { getHsrRegion } from './hsr.helper'
 import { GamesEnum, Hoyolab, IGame } from '../hoyolab'
 
