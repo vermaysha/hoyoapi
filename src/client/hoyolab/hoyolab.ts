@@ -1,9 +1,14 @@
-import { Cookie, ICookie } from "../cookie"
-import { HoyoAPIError } from "../error"
-import { Language, LanguageEnum } from "../language"
-import { HTTPRequest } from "../request"
-import { USER_GAMES_LIST } from "../routes/routes"
-import { GamesEnum, IGame, IGamesList, IHoyolabOptions } from "./hoyolab.interface"
+import { Cookie, ICookie } from '@/cookie'
+import { HoyoAPIError } from '@/error'
+import { Language, LanguageEnum } from '@/language'
+import { HTTPRequest } from '@/request'
+import { USER_GAMES_LIST } from '@/routes/routes'
+import {
+  GamesEnum,
+  IGame,
+  IGamesList,
+  IHoyolabOptions,
+} from './hoyolab.interface'
 
 /**
  * Represents the Hoyolab API client.

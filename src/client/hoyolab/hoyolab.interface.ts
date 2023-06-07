@@ -4,8 +4,8 @@ export enum GamesEnum {
   HONKAI_STAR_RAIL = 'hkrpg_global',
 }
 
-import { ICookie } from '../cookie'
-import { LanguageEnum } from '../language'
+import { ICookie } from '@/cookie'
+import { LanguageEnum } from '@/language'
 
 /**
  * Represents the options for accessing the Hoyolab API.
