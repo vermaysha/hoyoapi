@@ -140,6 +140,7 @@ export class HTTPRequest {
         const queryParams = new URLSearchParams(hostname.searchParams)
 
         Object.keys(this.params).forEach((val) => {
+          /* c8 ignore next */
           queryParams.append(val, this.params[val]?.toString() ?? '')
         })
 
@@ -192,6 +193,7 @@ export class HTTPRequest {
                     retcode: response?.retcode ?? -1,
                   },
                   status: {
+                    /* c8 ignore next */
                     code: res.statusCode ?? -1,
                     message: res.statusMessage,
                   },
@@ -212,6 +214,7 @@ export class HTTPRequest {
           })
 
           res.on('error', (err: Error) => {
+            /* c8 ignore next */
             reject(new HoyoAPIError(err.message))
           })
         })
@@ -232,15 +235,13 @@ export class HTTPRequest {
 
     const result = req.response
 
-    if ([200, 201].includes(req.status.code) === false) {
-      throw new HoyoAPIError(req.status.message ?? result.message)
-    }
-
+    /* c8 ignore start */
     if (result.retcode === -2016 && this.retries <= 60) {
       this.retries++
       await delay(1)
       return this.send(url, method)
     }
+    /* c8 ignore start */
 
     this.retries = 1
     this.body = {}

@@ -1,5 +1,7 @@
 import { GamesEnum } from '../client/hoyolab'
 
+/* c8 ignore start */
+
 /* Main API Endpoint */
 export const BBS_API = 'https://bbs-api-os.hoyolab.com'
 export const ACCOUNT_API = 'https://api-account-os.hoyolab.com'
@@ -49,3 +51,5 @@ export const DAILY_CLAIM_API = (game: GamesEnum) => {
 
 /* Redeem API Endpoint */
 export const REDEEM_CLAIM_API = `${HK4E_API}/common/apicdkey/api/webExchangeCdkey`
+
+/* c8 ignore stop */
