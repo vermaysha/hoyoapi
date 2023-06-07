@@ -1,6 +1,15 @@
 /**
  * Represents the interface for a response from the server.
  */
+export interface HTTPServerResponse {
+  response: HTTPResponse
+  status: {
+    code: number
+    message?: string
+  }
+  headers: HTTPHeaders
+}
+
 export interface HTTPResponse {
   /**
    * The status code of the response.
@@ -19,8 +28,7 @@ export interface HTTPResponse {
 }
 
 export interface HTTPOptions {
-  method: 'POST' | 'GET'
-  url: string
+  cookie?: string
 }
 
 /**
@@ -39,7 +47,7 @@ export type HTTPQueryParams = Dict<number | string | string[] | null>
 /**
  * Represents the type that can be used for the headers of a request.
  */
-export type HTTPHeaders = Dict<number | string>
+export type HTTPHeaders = Dict<number | string | string[]>
 
 /**
  * Represents the type that can be used for the body of a request.

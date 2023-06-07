@@ -7,7 +7,10 @@ import type {
   HTTPOptions,
   HTTPQueryParams,
   HTTPResponse,
+  HTTPServerResponse,
 } from './request.inteface'
+import { HoyoAPIError } from '../error'
+import { delay, generateDS } from './request.helper'
 
 /**
  * Class for handling HTTP requests with customizable headers, body, and parameters.
@@ -46,6 +49,22 @@ export class HTTPRequest {
     'x-rpc-app_version': '1.5.0',
     'x-rpc-client_type': '5',
     'x-rpc-language': 'en-us',
+  }
+
+  /**
+   * Flag indicating whether Dynamic Security is used.
+   */
+  private ds = false
+
+  /**
+   * The number of request attempts made.
+   */
+  private retries = 1
+
+  constructor(options?: HTTPOptions) {
+    if (options?.cookie) {
+      this.headers.Cookie = options.cookie
+    }
   }
 
   /**
@@ -95,84 +114,129 @@ export class HTTPRequest {
   }
 
   /**
+   * Set to used Dynamic Security or not
+   *
+   * @param flag boolean Flag indicating whether to use dynamic security or not (default: true).
+   * @returns {this} The current Request instance.
+   */
+  setDs(flag = true): this {
+    this.ds = flag
+    return this
+  }
+
+  /**
    * Send the HTTP request.
    *
-   * @param options.url - The URL to send the request to.
-   * @param options.method - The HTTP method to use. Defaults to 'GET'.
+   * @param url - The URL to send the request to.
+   * @param method - The HTTP method to use. Defaults to 'GET'.
    * @returns A Promise that resolves with the response data, or rejects with a HoyoAPIError if an error occurs.
    * @throws {HoyoAPIError} if an error occurs rejects with a HoyoAPIError
    */
-  send(options: HTTPOptions) {
-    const { method, url } = options
+  async send(
+    url: string,
+    method: 'GET' | 'POST' = 'GET',
+  ): Promise<HTTPResponse> {
+    // Internal NodeJS Fetch
+    const fetch = (url: string, method: string) => {
+      return new Promise<HTTPServerResponse>((resolve, reject) => {
+        const hostname = new URL(url)
+        const queryParams = new URLSearchParams(hostname.searchParams)
 
-    return new Promise<HTTPResponse>((resolve, reject) => {
-      const hostname = new URL(url)
-      const queryParams = new URLSearchParams(hostname.searchParams)
-
-      Object.keys(this.params).forEach((val) => {
-        queryParams.append(val, this.params[val]?.toString() ?? '')
-      })
-
-      hostname.search = queryParams.toString()
-
-      const options: RequestOptions = {
-        method,
-        headers: this.headers,
-      }
-
-      const client = request(hostname, options, (res: IncomingMessage) => {
-        const stream: Buffer[] = []
-
-        res.on('data', (chunk: Buffer) => {
-          stream.push(chunk)
+        Object.keys(this.params).forEach((val) => {
+          queryParams.append(val, this.params[val]?.toString() ?? '')
         })
 
-        res.on('end', () => {
-          let buffer = Buffer.concat(stream)
+        hostname.search = queryParams.toString()
 
-          // Handling content compression
-          const encoding = res.headers['content-encoding']
-          if (encoding === 'gzip') {
-            buffer = gunzipSync(buffer)
-          } else if (encoding === 'deflate') {
-            buffer = inflateSync(buffer)
-          } else if (encoding === 'br') {
-            buffer = brotliDecompressSync(buffer)
-          }
+        const options: RequestOptions = {
+          method,
+          headers: this.headers,
+        }
 
-          // Parse to UTF-8
-          const responseString = buffer.toString('utf8')
+        const client = request(hostname, options, (res: IncomingMessage) => {
+          const stream: Buffer[] = []
 
-          let response: any
-          // Parse body to JSON
-          if (res.headers['content-type'] === 'application/json') {
-            response = JSON.parse(responseString)
-          } else {
-            return reject({
-              error: 'Response Content-Type is not application/json',
+          res.on('data', (chunk: Buffer) => {
+            stream.push(chunk)
+          })
+
+          res.on('end', () => {
+            let buffer = Buffer.concat(stream)
+
+            // Handling content compression
+            const encoding = res.headers['content-encoding']
+            if (encoding === 'gzip') {
+              buffer = gunzipSync(buffer)
+            } else if (encoding === 'deflate') {
+              buffer = inflateSync(buffer)
+            } else if (encoding === 'br') {
+              buffer = brotliDecompressSync(buffer)
+            }
+
+            // Parse to UTF-8
+            const responseString = buffer.toString('utf8')
+
+            let response: any
+            // Parse body to JSON
+            if (res.headers['content-type'] === 'application/json') {
+              response = JSON.parse(responseString)
+            } else {
+              return reject({
+                error: 'Response Content-Type is not application/json',
+              })
+            }
+
+            resolve({
+              response: {
+                data: response?.data ?? null,
+                message: response?.message ?? '',
+                retcode: response?.retcode ?? -1,
+              },
+              status: {
+                code: res.statusCode ?? -1,
+                message: res.statusMessage,
+              },
+              headers: res.headers,
             })
-          }
+          })
 
-          resolve({
-            data: response?.data ?? null,
-            message: response?.message ?? '',
-            retcode: response?.retcode ?? -1,
+          res.on('error', (err: Error) => {
+            reject(new HoyoAPIError(err.message))
           })
         })
 
-        res.on('error', (err: Error) => {
-          reject(err)
-        })
+        if (method === 'POST') {
+          client.write(JSON.stringify(this.body))
+        }
+
+        client.end()
+
+        this.body = {}
+        this.params = {}
       })
+    }
 
-      if (method === 'POST') {
-        client.write(JSON.stringify(this.body))
-      }
+    if (this.ds) {
+      this.headers.DS = generateDS()
+    }
 
-      client.end()
+    const req = await fetch(url, method)
 
-      this.body = {}
-      this.params = {}
-    })
+    const result = req.response
+
+    if ([200, 201].includes(req.status.code) === false) {
+      throw new HoyoAPIError(req.status.message ?? result.message)
+    }
+
+    if (result.retcode === -2016 && this.retries <= 60) {
+      this.retries++
+      await delay(1)
+      return this.send(url, method)
+    }
+
+    this.retries = 1
+    this.body = {}
+    this.params = {}
+    return result
   }
 }
