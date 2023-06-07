@@ -83,7 +83,7 @@ export class Cookie {
 
     const cookies = Object.entries(cookie)
       .map(([key, value]) => {
-        if (value) {
+        if (!value) {
           return undefined
         }
 
