@@ -152,8 +152,10 @@ export class HTTPRequest {
 
         const client = request(hostname, options, (res: IncomingMessage) => {
           // Reject HTTP error response
-          if (res.statusCode && (res.statusCode >= 400 && res.statusCode < 600)) {
-            reject(new HoyoAPIError(`HTTP ${res.statusCode}: ${res.statusMessage}`))
+          if (res.statusCode && res.statusCode >= 400 && res.statusCode < 600) {
+            reject(
+              new HoyoAPIError(`HTTP ${res.statusCode}: ${res.statusMessage}`),
+            )
           }
 
           const stream: Buffer[] = []

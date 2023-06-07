@@ -1,11 +1,7 @@
 import { GamesEnum } from '@/client/hoyolab'
 import { LanguageEnum } from '@/language'
 import { HTTPRequest } from '@/request'
-import {
-  DAILY_CLAIM_API,
-  DAILY_INFO_API,
-  DAILY_REWARD_API,
-} from '@/routes'
+import { DAILY_CLAIM_API, DAILY_INFO_API, DAILY_REWARD_API } from '@/routes'
 import {
   IDailyClaim,
   IDailyInfo,
