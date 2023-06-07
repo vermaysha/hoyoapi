@@ -4,7 +4,6 @@ import { brotliDecompressSync, gunzipSync, inflateSync } from 'zlib'
 import type {
   HTTPBody,
   HTTPHeaders,
-  HTTPOptions,
   HTTPQueryParams,
   HTTPResponse,
   HTTPServerResponse,
@@ -61,10 +60,8 @@ export class HTTPRequest {
    */
   private retries = 1
 
-  constructor(options?: HTTPOptions) {
-    if (options?.cookie) {
-      this.headers.Cookie = options.cookie
-    }
+  constructor(cookie?: string) {
+    if (cookie) this.headers.Cookie = cookie
   }
 
   /**
@@ -179,25 +176,32 @@ export class HTTPRequest {
             let response: any
             // Parse body to JSON
             if (res.headers['content-type'] === 'application/json') {
-              response = JSON.parse(responseString)
+              try {
+                response = JSON.parse(responseString)
+                resolve({
+                  response: {
+                    data: response?.data ?? null,
+                    message: response?.message ?? '',
+                    retcode: response?.retcode ?? -1,
+                  },
+                  status: {
+                    code: res.statusCode ?? -1,
+                    message: res.statusMessage,
+                  },
+                  headers: res.headers,
+                })
+              } catch (error) {
+                reject(
+                  new HoyoAPIError('Failed to parse response body as JSON'),
+                )
+              }
             } else {
-              return reject({
-                error: 'Response Content-Type is not application/json',
-              })
+              reject(
+                new HoyoAPIError(
+                  'Response Content-Type is not application/json',
+                ),
+              )
             }
-
-            resolve({
-              response: {
-                data: response?.data ?? null,
-                message: response?.message ?? '',
-                retcode: response?.retcode ?? -1,
-              },
-              status: {
-                code: res.statusCode ?? -1,
-                message: res.statusMessage,
-              },
-              headers: res.headers,
-            })
           })
 
           res.on('error', (err: Error) => {
@@ -210,9 +214,6 @@ export class HTTPRequest {
         }
 
         client.end()
-
-        this.body = {}
-        this.params = {}
       })
     }
 

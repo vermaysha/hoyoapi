@@ -27,10 +27,6 @@ export interface HTTPResponse {
   data: unknown
 }
 
-export interface HTTPOptions {
-  cookie?: string
-}
-
 /**
  * Represents the base type that can be used for properties in a request body,
  * request header, or request parameter.
