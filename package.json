@@ -14,8 +14,8 @@
   "module": "./dist/esm/index.mjs",
   "scripts": {
     "prepare": "husky install",
-    "format": "prettier . -w",
-    "lint": "eslint . --fix",
+    "format": "prettier --ignore-path .gitignore . -w",
+    "lint": "eslint --ignore-path .gitignore . --fix",
     "build": "tsx scripts/build.ts"
   },
   "repository": {
