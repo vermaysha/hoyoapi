@@ -107,6 +107,7 @@ export class HonkaiImpact {
       this.request,
       this.lang,
       GamesEnum.HONKAI_IMPACT,
+      this.region
     )
     this.redeem = new RedeemModule(
       this.request,

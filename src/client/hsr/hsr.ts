@@ -107,6 +107,7 @@ export class HonkaiStarRail {
       this.request,
       this.lang,
       GamesEnum.HONKAI_STAR_RAIL,
+      this.region
     )
     this.redeem = new RedeemModule(
       this.request,

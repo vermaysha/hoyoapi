@@ -26,6 +26,7 @@ export class DailyModule {
     private request: HTTPRequest,
     private lang: LanguageEnum,
     private game: GamesEnum,
+    private region: string | null
   ) {
     this.dailyInfoUrl = DAILY_INFO_API(game)
     this.dailyRewardUrl = DAILY_REWARD_API(game)
@@ -67,6 +68,10 @@ export class DailyModule {
 
     if (typeof res.short_sign_day === 'undefined') {
       res.short_sign_day = 0
+    }
+
+    if (res.region === '' && this.region) {
+      res.region = this.region
     }
 
     return res as IDailyInfo
