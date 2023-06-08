@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/wavyflow/hoyoapi#readme",
   "lint-staged": {
-    "**/*.(ts,js)": [
+    "*": [
       "npm run lint",
       "npm run format"
     ]
