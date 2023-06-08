@@ -1,2 +1,2 @@
 export * from './redeem'
-export type * from './redeem.interface'
+export * from './redeem.interface'

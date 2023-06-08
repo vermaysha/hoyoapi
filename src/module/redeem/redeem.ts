@@ -49,7 +49,7 @@ export class RedeemModule {
       region: this.region,
       game_biz: this.game,
       cdkey: code.replace(/\uFFFD/g, ''),
-      lang: this.lang,
+      lang: this.lang.toString().split('-')[0],
       sLangKey: this.lang,
     })
 
