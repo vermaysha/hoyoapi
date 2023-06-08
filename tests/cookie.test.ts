@@ -7,7 +7,7 @@ test('parseCookie return should be valid', (t) => {
     ltuid: 1,
     cookieToken: 'cookieToken',
     mi18nLang: 'id-id',
-    cookieTokenV2: 'cookieTokenV2'
+    cookieTokenV2: 'cookieTokenV2',
   })
 
   t.deepEqual(
@@ -60,7 +60,7 @@ test('parseCookieString return should be valid when ltuid is null', (t) => {
     mi18nLang: 'id-id',
     accountId: 1,
     cookieTokenV2: 'cookieTokenV2',
-    accountIdV2: 1
+    accountIdV2: 1,
   })
 })
 
