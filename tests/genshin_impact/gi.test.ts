@@ -6,7 +6,7 @@ test('GenshinImpact.constructor() should be able to handle cookie string', async
   const cookieString = Cookie.parseCookie(cookie)
 
   const gi = new GenshinImpact({
-    cookie: cookieString
+    cookie: cookieString,
   })
 
   t.deepEqual(gi.cookie, Cookie.parseCookieString(cookieString))

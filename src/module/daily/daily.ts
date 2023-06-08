@@ -45,7 +45,8 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const res: IDailyInfo = (await this.request.send(this.dailyInfoUrl)).data as IDailyInfo
+    const res: IDailyInfo = (await this.request.send(this.dailyInfoUrl))
+      .data as IDailyInfo
 
     if (typeof res?.first_bind === 'undefined') {
       res.first_bind = false

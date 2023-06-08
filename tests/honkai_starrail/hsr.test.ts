@@ -6,7 +6,7 @@ test('HonkaiStarRail.constructor() should be able to handle cookie string', asyn
   const cookieString = Cookie.parseCookie(cookie)
 
   const gi = new HonkaiStarRail({
-    cookie: cookieString
+    cookie: cookieString,
   })
 
   t.deepEqual(gi.cookie, Cookie.parseCookieString(cookieString))

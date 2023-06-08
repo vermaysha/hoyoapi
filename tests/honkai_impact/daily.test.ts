@@ -36,23 +36,16 @@ function dailyRewardTest(t: ExecutionContext, res: IDailyReward) {
   t.is(typeof res.biz, 'string')
   t.is(typeof res.award, 'object')
 
-  t.deepEqual(Object.keys(res).sort(), [
-    'month',
-    'resign',
-    'now',
-    'biz',
-    'award'
-  ].sort())
+  t.deepEqual(
+    Object.keys(res).sort(),
+    ['month', 'resign', 'now', 'biz', 'award'].sort(),
+  )
 
   t.is(typeof res.award.icon, 'string')
   t.is(typeof res.award.name, 'string')
   t.is(typeof res.award.cnt, 'number')
 
-  t.deepEqual(Object.keys(res.award).sort(), [
-    'icon',
-    'name',
-    'cnt'
-  ].sort())
+  t.deepEqual(Object.keys(res.award).sort(), ['icon', 'name', 'cnt'].sort())
 }
 
 test('daily.info() return should be valid', async (t) => {
@@ -72,24 +65,17 @@ test('daily.rewards() return should be valid', async (t) => {
   t.is(typeof res.biz, 'string')
   t.is(typeof res.awards, 'object')
 
-  t.deepEqual(Object.keys(res).sort(), [
-    'month',
-    'resign',
-    'now',
-    'biz',
-    'awards'
-  ].sort())
+  t.deepEqual(
+    Object.keys(res).sort(),
+    ['month', 'resign', 'now', 'biz', 'awards'].sort(),
+  )
 
   res.awards.forEach((award) => {
     t.is(typeof award.icon, 'string')
     t.is(typeof award.name, 'string')
     t.is(typeof award.cnt, 'number')
 
-    t.deepEqual(Object.keys(award).sort(), [
-      'icon',
-      'name',
-      'cnt'
-    ].sort())
+    t.deepEqual(Object.keys(award).sort(), ['icon', 'name', 'cnt'].sort())
   })
 })
 
@@ -121,12 +107,7 @@ test('daily.claim() return should be valid', async (t) => {
   t.is(typeof res.reward, 'object')
   t.is(typeof res.status, 'string')
 
-  t.deepEqual(Object.keys(res).sort(), [
-    'code',
-    'info',
-    'reward',
-    'status'
-  ])
+  t.deepEqual(Object.keys(res).sort(), ['code', 'info', 'reward', 'status'])
 
   if (res.reward) {
     dailyRewardTest(t, res.reward)
