@@ -36,17 +36,35 @@ const getEventBaseUrl = (game: GamesEnum) => {
   }
 }
 
+const getActId = (game: GamesEnum) => {
+  if (game === GamesEnum.GENSHIN_IMPACT) {
+    return 'e202102251931481'
+  } else if (game === GamesEnum.HONKAI_IMPACT) {
+    return 'e202110291205111'
+  } else if (game === GamesEnum.HONKAI_STAR_RAIL) {
+    return 'e202303301540311'
+  }
+
+  return ''
+}
+
 /* Daily Check-In API Endpoint */
 export const DAILY_INFO_API = (game: GamesEnum) => {
-  return `${getEventBaseUrl(game)}/event/${getEventName(game)}/info`
+  return `${getEventBaseUrl(game)}/event/${getEventName(
+    game,
+  )}/info?act_id=${getActId(game)}`
 }
 
 export const DAILY_REWARD_API = (game: GamesEnum) => {
-  return `${getEventBaseUrl(game)}/event/${getEventName(game)}/home`
+  return `${getEventBaseUrl(game)}/event/${getEventName(
+    game,
+  )}/home?act_id=${getActId(game)}`
 }
 
 export const DAILY_CLAIM_API = (game: GamesEnum) => {
-  return `${getEventBaseUrl(game)}/event/${getEventName(game)}/claim`
+  return `${getEventBaseUrl(game)}/event/${getEventName(
+    game,
+  )}/claim?act_id=${getActId(game)}`
 }
 
 /* Redeem API Endpoint */
