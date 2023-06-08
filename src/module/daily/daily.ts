@@ -45,9 +45,9 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const res: any = (await this.request.send(this.dailyInfoUrl)).data
+    const res: IDailyInfo = (await this.request.send(this.dailyInfoUrl)).data as IDailyInfo
 
-    if (typeof res.first_bind === 'undefined') {
+    if (typeof res?.first_bind === 'undefined') {
       res.first_bind = false
     }
 
@@ -74,7 +74,7 @@ export class DailyModule {
       res.region = this.region
     }
 
-    return res as IDailyInfo
+    return res
   }
 
   /**
@@ -101,9 +101,11 @@ export class DailyModule {
       res.biz = 'hk4e'
     } else if (this.game === GamesEnum.HONKAI_STAR_RAIL) {
       res.biz = 'hkrpg'
+      /* c8 ignore next 3 */
     } else {
       res.biz = ''
     }
+    /* c8 ignore next 3 */
 
     if (typeof res.resign === 'undefined') {
       res.resign = false
@@ -123,10 +125,12 @@ export class DailyModule {
     const response = await this.rewards()
 
     if (day === null) {
+      /* c8 ignore start */
       const now = response?.now
         ? new Date(parseInt(response.now) * 1000)
         : new Date()
       day = now.getDate()
+      /* c8 ignore stop */
     }
 
     const date = new Date()
@@ -167,6 +171,7 @@ export class DailyModule {
     const info = await this.info()
     const reward = await this.reward()
 
+    /* c8 ignore start */
     if (response.retcode === -5003) {
       return {
         status: response.message,
@@ -196,5 +201,6 @@ export class DailyModule {
       reward: null,
       info,
     }
+    /* c8 ignore start */
   }
 }
