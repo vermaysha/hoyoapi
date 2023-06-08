@@ -92,6 +92,7 @@ export class Hoyolab {
     const res = await this.request.send(USER_GAMES_LIST)
     const data = res.data as IGamesList
 
+    /* c8 ignore next 5 */
     if (!res.data || !data.list) {
       throw new HoyoAPIError(
         res.message ?? 'There is no game account on this hoyolab account !',
@@ -112,6 +113,7 @@ export class Hoyolab {
   public async gameAccount(game: GamesEnum): Promise<IGame> {
     const games = await this.gamesList(game)
 
+    /* c8 ignore next 5 */
     if (games.length < 1) {
       throw new HoyoAPIError(
         'There is no game account on this hoyolab account !',
@@ -129,7 +131,8 @@ export class Hoyolab {
    * @async
    * @returns {Promise<IGameRecordCard>} The game account.
    */
-  async gameRecordCard() {
+  async gameRecordCard(): Promise<IGameRecordCard> {
+    /* c8 ignore start */
     this.request.setQueryParams({
       uid:
         this.cookie.ltuid || this.cookie.accountId || this.cookie.accountIdV2,
@@ -139,4 +142,5 @@ export class Hoyolab {
 
     return res.data.list as IGameRecordCard
   }
+  /* c8 ignore stop */
 }

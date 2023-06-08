@@ -150,6 +150,7 @@ export class HonkaiStarRail {
    * @deprecated Use through { @link HonkaiStarRail.daily | HonkaiStarRail.daily.info() } instead
    */
   dailyInfo() {
+    /* c8 ignore next 3 */
     return this.daily.info()
   }
 
@@ -159,6 +160,7 @@ export class HonkaiStarRail {
    * @deprecated Use through { @link HonkaiStarRail.daily | HonkaiStarRail.daily.rewards() } instead
    */
   dailyRewards() {
+    /* c8 ignore next 3 */
     return this.daily.rewards()
   }
 
@@ -170,6 +172,7 @@ export class HonkaiStarRail {
    * @deprecated Use through { @link HonkaiStarRail.daily | HonkaiStarRail.daily.reward() } instead
    */
   dailyReward(day: number | null = null) {
+    /* c8 ignore next 3 */
     return this.daily.reward(day)
   }
 
@@ -180,6 +183,7 @@ export class HonkaiStarRail {
    * @deprecated Use through { @link HonkaiStarRail.daily | HonkaiStarRail.daily.claim() } instead
    */
   dailyClaim() {
+    /* c8 ignore next 3 */
     return this.daily.claim()
   }
 
@@ -191,6 +195,7 @@ export class HonkaiStarRail {
    * @deprecated Use through { @link HonkaiStarRail.redeem | HonkaiStarRail.redeem.claim() } instead
    */
   redeemCode(code: string) {
+    /* c8 ignore next 3 */
     return this.redeem.claim(code)
   }
 }

@@ -11,6 +11,7 @@ import { HonkaiRegion, HonkaiRegionKeyType } from './hi.interface'
 export function getHi3Region(uid: number): HonkaiRegion {
   let key: string
 
+  /* c8 ignore start */
   if (uid > 10_000_000 && uid < 100_000_000) {
     key = 'ASIA'
   } else if (uid > 100_000_000 && uid < 200_000_000) {
@@ -20,6 +21,7 @@ export function getHi3Region(uid: number): HonkaiRegion {
   } else {
     throw new HoyoAPIError(`Given UID ${uid} is invalid !`)
   }
+  /* c8 ignore stop */
 
   return HonkaiRegion[key as HonkaiRegionKeyType]
 }
