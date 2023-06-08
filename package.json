@@ -19,6 +19,7 @@
     "build": "ts-node scripts/build.ts",
     "test": "npm run type-check && ava",
     "test:coverage": "npm run type-check && c8 ava",
+    "test:watch": "ava --watch",
     "type-check": "tsc --noEmit"
   },
   "repository": {
@@ -68,6 +69,7 @@
     "@types/eslint": "latest",
     "@types/node": "20.2.5",
     "@types/prettier": "latest",
+    "@types/sinon": "^10.0.15",
     "@typescript-eslint/eslint-plugin": "5.59.9",
     "@typescript-eslint/parser": "5.59.9",
     "ava": "^5.2.0",
@@ -78,7 +80,9 @@
     "eslint-config-prettier": "8.8.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.2",
+    "nock": "^13.3.0",
     "prettier": "2.8.8",
+    "sinon": "^15.0.3",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.9.1",
     "tsx": "^3.12.6",

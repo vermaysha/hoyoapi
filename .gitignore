@@ -4,3 +4,4 @@ dist
 test.ts
 api.text
 api
+coverage
