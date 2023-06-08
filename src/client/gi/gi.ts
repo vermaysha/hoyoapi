@@ -92,7 +92,7 @@ export class GenshinImpact {
       this.request,
       this.lang,
       GamesEnum.GENSHIN_IMPACT,
-      this.region
+      this.region,
     )
     this.redeem = new RedeemModule(
       this.request,

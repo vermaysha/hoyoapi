@@ -26,7 +26,7 @@ export class DailyModule {
     private request: HTTPRequest,
     private lang: LanguageEnum,
     private game: GamesEnum,
-    private region: string | null
+    private region: string | null,
   ) {
     this.dailyInfoUrl = DAILY_INFO_API(game)
     this.dailyRewardUrl = DAILY_REWARD_API(game)
