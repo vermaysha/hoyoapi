@@ -5,3 +5,6 @@ export * from './language'
 export * from './request'
 export * from './routes'
 export * from './client'
+
+export * from './module/daily/daily.interface'
+export * from './module/redeem/redeem.interface'

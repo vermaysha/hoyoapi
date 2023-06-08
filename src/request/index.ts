@@ -1,2 +1,2 @@
 export * from './request'
-export type * from './request.inteface'
+export * from './request.inteface'
