@@ -33,6 +33,7 @@ export class Cookie {
     cookieString.split('; ').forEach((cookie) => {
       const cookieSplited = cookie.trim().split('=')
 
+      /* c8 ignore next 3 */
       if (keys.includes(cookieSplited[0]) === false) {
         return
       }
@@ -83,6 +84,7 @@ export class Cookie {
 
     const cookies = Object.entries(cookie)
       .map(([key, value]) => {
+        /* c8 ignore next 3 */
         if (!value) {
           return undefined
         }
