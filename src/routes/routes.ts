@@ -19,7 +19,7 @@ const getEventName = (game: GamesEnum) => {
   } else if (game === GamesEnum.HONKAI_IMPACT) {
     return 'mani'
   } else if (game === GamesEnum.HONKAI_STAR_RAIL) {
-    return 'luna'
+    return 'luna/os'
   }
 
   return ''
@@ -64,7 +64,7 @@ export const DAILY_REWARD_API = (game: GamesEnum) => {
 export const DAILY_CLAIM_API = (game: GamesEnum) => {
   return `${getEventBaseUrl(game)}/event/${getEventName(
     game,
-  )}/claim?act_id=${getActId(game)}`
+  )}/sign?act_id=${getActId(game)}`
 }
 
 /* Redeem API Endpoint */
