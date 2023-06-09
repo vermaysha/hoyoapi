@@ -70,4 +70,15 @@ export const DAILY_CLAIM_API = (game: GamesEnum) => {
 /* Redeem API Endpoint */
 export const REDEEM_CLAIM_API = `${HK4E_API}/common/apicdkey/api/webExchangeCdkey`
 
+/* Genshin Impact Battle Chronicles */
+export const GENSHIN_RECORD_INDEX_API = `${BBS_API}/game_record/genshin/api/index`
+export const GENSHIN_RECORD_CHARACTER_API = `${BBS_API}/game_record/genshin/api/character`
+export const GENSHIN_RECORD_AVATAR_BASIC_INFO_API = `${BBS_API}/game_record/genshin/api/avatarBasicInfo`
+export const GENSHIN_RECORD_SPIRAL_ABYSS_API = `${BBS_API}/game_record/genshin/api/spiralAbyss`
+export const GENSHIN_RECORD_DAILY_NOTE_API = `${BBS_API}/game_record/genshin/api/dailyNote`
+
+/* Genshin Impact Diary */
+export const GENSHIN_DIARY_LIST_API = `${HK4E_API}/event/ysledgeros/month_info`
+export const GENSHIN_DIARY_DETAIL_API = `${HK4E_API}/event/ysledgeros/month_detail`
+
 /* c8 ignore stop */
