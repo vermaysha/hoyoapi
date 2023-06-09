@@ -76,7 +76,7 @@
     "c8": "^7.13.0",
     "concurrently": "^8.0.1",
     "dotenv": "^16.0.3",
-    "esbuild": "^0.17.14",
+    "esbuild": "^0.18.0",
     "eslint": "8.42.0",
     "eslint-config-prettier": "8.8.0",
     "husky": "8.0.3",
