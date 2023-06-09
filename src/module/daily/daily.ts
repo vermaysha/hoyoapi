@@ -167,7 +167,7 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const response = await this.request.send(this.dailySignUrl, 'POST')
+    const response = await this.request.send(this.dailySignUrl, 'POST', 0)
 
     const info = await this.info()
     const reward = await this.reward()
