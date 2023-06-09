@@ -10,6 +10,8 @@ import type {
 } from './request.inteface'
 import { HoyoAPIError } from '../error'
 import { delay, generateDS } from './request.helper'
+import { Cache } from '../cache'
+import { createHash } from 'crypto'
 
 /**
  * Class for handling HTTP requests with customizable headers, body, and parameters.
@@ -28,6 +30,11 @@ export class HTTPRequest {
    * Body of the request.
    */
   private body: HTTPBody = {}
+
+  /**
+   * The cache used for the request
+   */
+  private cache: Cache
 
   /*
    * Headers for the request.
@@ -62,6 +69,7 @@ export class HTTPRequest {
 
   constructor(cookie?: string) {
     if (cookie) this.headers.Cookie = cookie
+    this.cache = new Cache()
   }
 
   /**
@@ -126,12 +134,14 @@ export class HTTPRequest {
    *
    * @param url - The URL to send the request to.
    * @param method - The HTTP method to use. Defaults to 'GET'.
+   * @param ttl - The TTL value for the cached data in seconds.
    * @returns A Promise that resolves with the response data, or rejects with a HoyoAPIError if an error occurs.
    * @throws {HoyoAPIError} if an error occurs rejects with a HoyoAPIError
    */
   async send(
     url: string,
     method: 'GET' | 'POST' = 'GET',
+    ttl = 60,
   ): Promise<HTTPResponse> {
     // Internal NodeJS Fetch
     const fetch = (url: string, method: string) => {
@@ -227,6 +237,25 @@ export class HTTPRequest {
       })
     }
 
+    const cacheKey = createHash('md5')
+      .update(
+        JSON.stringify({
+          url,
+          method,
+          body: this.body,
+          params: this.params,
+        }),
+      )
+      .digest('hex')
+
+    const cachedResult = this.cache.get(cacheKey)
+
+    /* c8 ignore start */
+    if (cachedResult) {
+      return cachedResult as HTTPResponse
+    }
+    /* c8 ignore stop */
+
     if (this.ds) {
       this.headers.DS = generateDS()
     }
@@ -246,6 +275,8 @@ export class HTTPRequest {
     this.retries = 1
     this.body = {}
     this.params = {}
+
+    this.cache.set(cacheKey, result, ttl)
     return result
   }
 }
