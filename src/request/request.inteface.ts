@@ -48,4 +48,4 @@ export type HTTPHeaders = Dict<number | string | string[]>
 /**
  * Represents the type that can be used for the body of a request.
  */
-export type HTTPBody = Dict<number | string | string[] | null>
+export type HTTPBody = Dict<number | number[] | string | string[] | null>
