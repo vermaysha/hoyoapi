@@ -135,6 +135,12 @@ export interface IGenshinDiaryDetail extends IGenshinDiaryBase {
   list: IGenshinDiaryHistory[]
 }
 
+const currentMonth = new Date().getMonth()
+const oneMonthAgo = new Date()
+oneMonthAgo.setMonth(currentMonth - 1)
+const twoMonthAgo = new Date()
+twoMonthAgo.setMonth(currentMonth - 2)
+
 /**
  * Enum for diary months.
  * @readonly
@@ -144,15 +150,15 @@ export enum DiaryMonthEnum {
   /**
    * Current month
    */
-  CURRENT = 3,
+  CURRENT = currentMonth + 1,
   /**
    * One month ago
    */
-  ONE_MONTH_AGO = 2,
+  ONE_MONTH_AGO = oneMonthAgo.getMonth() + 1,
   /**
    * Two months ago
    */
-  TWO_MONTH_AGO = 1,
+  TWO_MONTH_AGO = twoMonthAgo.getMonth() + 1,
 }
 
 /**
