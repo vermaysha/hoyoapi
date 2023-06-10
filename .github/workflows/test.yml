@@ -1,0 +1,69 @@
+name: Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request_target:
+    branches:
+      - master
+
+concurrency:
+  group: 'test'
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Test Library API Response
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DEBUG: true
+          envkey_LTOKEN: ${{ secrets.LTOKEN }}
+          envkey_LTUID: ${{ secrets.LTUID }}
+          envkey_ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+          envkey_COOKIE_TOKEN: ${{ secrets.COOKIE_TOKEN }}
+          envkey_ACCOUNT_ID_V2: ${{ secrets.ACCOUNT_ID_V2 }}
+          envkey_COOKIE_TOKEN_V2: ${{ secrets.COOKIE_TOKEN_V2 }}
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format
+        run: npm run format
+
+      - name: Test and Coverage
+        run: npm run test:coverage
+
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          style: flat
+          source: coverage/coverage-summary.json
+          output: coverage/badges.svg
+
+      - name: Deploy Test
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
