@@ -20,6 +20,10 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
+defaults:
+  run:
+    working-directory: ./docs
+
 jobs:
   deploy:
     name: Deploy to GitHub Pages
@@ -27,7 +31,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: 'docs'
+        working-directory: ./docs
 
     steps:
       - uses: actions/checkout@v3
