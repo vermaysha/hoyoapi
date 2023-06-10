@@ -6,8 +6,6 @@ on:
     workflows: ['Release package']
     types:
       - completed
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 # Allow one concurrent deployment
 concurrency:
@@ -16,7 +14,7 @@ concurrency:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write
+      id-token: write
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
 
