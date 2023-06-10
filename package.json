@@ -14,8 +14,8 @@
   "module": "./dist/esm/index.mjs",
   "scripts": {
     "prepare": "husky install",
-    "format": "prettier --ignore-path .gitignore . -w",
-    "lint": "eslint --ignore-path .gitignore . --fix",
+    "format": " npx prettier --ignore-path .gitignore \"**/*.{ts,js,json,mjs,tsx}\" -w",
+    "lint": "eslint --ignore-path .gitignore \"**/*.{ts,js,json,mjs,tsx}\" --fix",
     "build": "ts-node scripts/build.ts",
     "test": "npm run type-check && ava",
     "test:coverage": "npm run type-check && c8 ava",
@@ -40,8 +40,8 @@
   "homepage": "https://github.com/wavyflow/hoyoapi#readme",
   "lint-staged": {
     "*": [
-      "npm run lint",
-      "npm run format"
+      "prettier --write --ignore-unknown",
+      "eslint --fix"
     ]
   },
   "files": [
