@@ -34,4 +34,4 @@ async function main() {
 main()
 ```
 
-Find out more reference in [Hoyolab API Reference](/api/classes/Hoyolab.html)
+Find out more reference in [Genshin Impact API Refence](/docs/api/classes/GenshinImpact)

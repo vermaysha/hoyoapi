@@ -26,3 +26,5 @@ const hsr = HonkaiStarRail.create({
   lang: LanguageEnum.ENGLISH, // optional
 })
 ```
+
+Find out more reference in [Honkai Star Rail API Refence](/docs/api/classes/HonkaiStarRail)

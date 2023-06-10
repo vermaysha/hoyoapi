@@ -106,4 +106,4 @@ async function main() {
 main()
 ```
 
-Read the [Genshin Impact API Refence](/api/classes/GenshinImpact.html)
+Read the [Genshin Impact API Reference](/docs/api/classes/GenshinImpact)

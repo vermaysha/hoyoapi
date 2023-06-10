@@ -26,3 +26,5 @@ const hi = HonkaiImpact.create({
   lang: LanguageEnum.ENGLISH, // optional
 })
 ```
+
+Find out more reference in [Honkai Impact API Refence](/docs/api/classes/HonkaiImpact)
