@@ -97,6 +97,7 @@ const config = {
     }),
 
   plugins: [
+    require.resolve('docusaurus-lunr-search'),
     [
       'docusaurus-plugin-typedoc',
 
