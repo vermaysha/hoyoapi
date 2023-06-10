@@ -18,15 +18,15 @@ import {
 import { SpiralAbyssScheduleEnum } from './record.enum'
 
 /**
- * RecordModule class provides methods to interact with Genshin Impact's record module endpoints.
+ * GenshinRecordModule class provides methods to interact with Genshin Impact's record module endpoints.
  *
  * @class
  * @internal
  * @category Module
  */
-export class RecordModule {
+export class GenshinRecordModule {
   /**
-   * Creates an instance of RecordModule.
+   * Creates an instance of GenshinRecordModule.
    *
    * @constructor
    * @param {HTTPRequest} request - An instance of Request class.
@@ -103,7 +103,7 @@ export class RecordModule {
    * Returns the summary information of Genshin Impact game characters.
    *
    * @param characterIds - An array of character IDs to retrieve the summary information for.
-   * @returns A Promise that resolves to an object containing the summary information of the characters.
+   * @returns {Promise<IGenshinCharacterSummary>} A Promise that resolves to an object containing the summary information of the characters.
    * @throws Throws an error if the UID parameter is missing or failed to be filled.
    * @remarks
    * This method sends a request to the Genshin Impact API to get the daily note information for a user.
@@ -136,7 +136,7 @@ export class RecordModule {
    *
    * @param scheduleType - The schedule type of the Abyss, either CURRENT or PREVIOUS.
    * @returns A Promise that resolves with an object containing the player's Spiral Abyss data.
-   * @throws HoyoAPIError if UID parameter is missing or failed to be filled, or if the given scheduleType parameter is invalid.
+   * @throws {HoyoAPIError} if UID parameter is missing or failed to be filled, or if the given scheduleType parameter is invalid.
    * @remarks
    * This method sends a request to the Genshin Impact API to get the daily note information for a user.
    * The user's region and UID must be set before calling this method, otherwise an error will be thrown.
@@ -169,8 +169,8 @@ export class RecordModule {
 
   /**
    * Retrieve the daily note information for a Genshin Impact user.
-   * @returns Promise<IGenshinDailyNote> The daily note information.
-   * @throws HoyoAPIError if the UID parameter is missing or failed to be filled.
+   * @returns {Promise<IGenshinDailyNote>} The daily note information.
+   * @throws {HoyoAPIError} if the UID parameter is missing or failed to be filled.
    * @remarks
    * This method sends a request to the Genshin Impact API to get the daily note information for a user.
    * The user's region and UID must be set before calling this method, otherwise an error will be thrown.

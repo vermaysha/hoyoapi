@@ -7,12 +7,12 @@ import { HTTPRequest } from '../../request'
 import { DEFAULT_REFERER } from '../../routes'
 import { getGenshinRegion } from './gi.helper'
 import { GamesEnum, Hoyolab, IGame } from '../hoyolab'
-import { RecordModule, SpiralAbyssScheduleEnum } from './record'
-import { DiaryEnum, DiaryModule, DiaryMonthEnum } from './diary'
+import { GenshinRecordModule, SpiralAbyssScheduleEnum } from './record'
+import { DiaryEnum, GenshinDiaryModule, DiaryMonthEnum } from './diary'
 
 /**
  * The `Genshin` class provides an interface to interact with Genshin Impact-related features on the Mihoyo website.
- * It contains references to various modules such as `DailyModule`, `RedeemModule`, `RecordModule`, and `DiaryModule` which allow you to perform various operations related to these features.
+ * It contains references to various modules such as `DailyModule`, `RedeemModule`, `GenshinRecordModule`, and `GenshinDiaryModule` which allow you to perform various operations related to these features.
  *
  * @class
  * @category Main
@@ -31,16 +31,16 @@ export class GenshinImpact {
   readonly redeem: RedeemModule
 
   /**
-   * The `RecordModule` object provides an interface to interact with the user record feature in Genshin Impact.
+   * The `GenshinRecordModule` object provides an interface to interact with the user record feature in Genshin Impact.
    *
    */
-  readonly record: RecordModule
+  readonly record: GenshinRecordModule
 
   /**
-   * The `DiaryModule` object provides an interface to interact with the user diary feature in Genshin Impact.
+   * The `GenshinDiaryModule` object provides an interface to interact with the user diary feature in Genshin Impact.
    *
    */
-  readonly diary: DiaryModule
+  readonly diary: GenshinDiaryModule
 
   /**
    * HoyYolab account object
@@ -115,13 +115,18 @@ export class GenshinImpact {
       this.region,
       this.uid,
     )
-    this.record = new RecordModule(
+    this.record = new GenshinRecordModule(
       this.request,
       this.lang,
       this.region,
       this.uid,
     )
-    this.diary = new DiaryModule(this.request, this.lang, this.region, this.uid)
+    this.diary = new GenshinDiaryModule(
+      this.request,
+      this.lang,
+      this.region,
+      this.uid,
+    )
   }
 
   /**

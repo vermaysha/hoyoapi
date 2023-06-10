@@ -19,7 +19,7 @@ import {
  * @internal
  * @category Module
  */
-export class DiaryModule {
+export class GenshinDiaryModule {
   /**
    * Constructs a DiaryModule instance
    *
