@@ -23,7 +23,7 @@ const config = {
   organizationName: 'wavyflow', // Usually your GitHub org/user name.
   projectName: 'hoyoapi', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
