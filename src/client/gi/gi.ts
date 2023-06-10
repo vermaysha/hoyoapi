@@ -209,11 +209,11 @@ export class GenshinImpact {
    * Returns the diary information of a given month for a user
    *
    * @param month
-   * @alias {@link GenshinImpact.diary | Genshin.diary.diaries()}
-   * @deprecated Use through {@link GenshinImpact.diary | Genshin.diary.diaries()} instead
+   * @alias {@link GenshinImpact.diary | Genshin.diary.list()}
+   * @deprecated Use through {@link GenshinImpact.diary | Genshin.diary.list()} instead
    */
-  async diaries(month: DiaryMonthEnum = DiaryMonthEnum.CURRENT) {
-    return this.diary.diaries(month)
+  async diaryList(month: DiaryMonthEnum = DiaryMonthEnum.CURRENT) {
+    return this.diary.list(month)
   }
 
   /**

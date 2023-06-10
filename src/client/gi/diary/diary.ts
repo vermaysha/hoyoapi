@@ -45,7 +45,7 @@ export class DiaryModule {
    * This method sends a request to the Genshin Impact API to get the daily note information for a user.
    * The user's region and UID must be set before calling this method, otherwise an error will be thrown.
    */
-  async diaries(
+  async list(
     month: DiaryMonthEnum = DiaryMonthEnum.CURRENT,
   ): Promise<IGenshinDiaryInfo> {
     if (!this.region || !this.uid) {
