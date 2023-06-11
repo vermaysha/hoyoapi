@@ -16,7 +16,9 @@ export interface IHoyolabOptions {
   /**
    * The cookie used to authenticate the request. This can be either a string or an {@link ICookie} object.
    */
-  cookie: ICookie | string
+  cookie:
+    | Pick<ICookie, 'ltoken' | 'ltuid' | 'cookieToken' | 'cookieTokenV2'>
+    | string
 
   /**
    * The language to use for the request. This should be a value of {@link LanguageEnum}.

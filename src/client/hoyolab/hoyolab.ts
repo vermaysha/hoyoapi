@@ -79,6 +79,12 @@ export class Hoyolab {
    * @returns {Promise<IGame[]>} The list of games on this Hoyolab account.
    */
   public async gamesList(game?: GamesEnum): Promise<IGame[]> {
+    if (!this.cookie.cookieTokenV2) {
+      throw new HoyoAPIError(
+        'You must set options.cookie.cookieTokenV2 to access this API',
+      )
+    }
+
     if (game) {
       this.request.setQueryParams({
         game_biz: game,
