@@ -19,67 +19,54 @@ export class HonkaiStarRail {
   /**
    * The Daily module for the Honkai Star Rail game.
    *
-   * @public
-   * @readonly
    */
   readonly daily: DailyModule
 
   /**
    * The Redeem module for the Honkai Star Rail game.
    *
-   * @public
-   * @readonly
    */
   readonly redeem: RedeemModule
 
   /**
    * The cookie used for authentication.
    *
-   * @public
-   * @readonly
    */
   readonly cookie: ICookie
 
   /**
    * The request object used to make HTTP requests.
    *
-   * @public
-   * @readonly
    */
-  readonly request: HTTPRequest
+  private request: HTTPRequest
 
   /**
    * HoyYolab account object
    *
-   * @public
    */
-  public account: IGame | null = null
+  private _account: IGame | null = null
 
   /**
    * The UID of the Honkai Star Rail account.
    *
-   * @public
    */
-  public readonly uid: number | null
+  readonly uid: number | null
 
   /**
    * The region of the Honkai Star Rail account.
    *
-   * @public
    */
-  public readonly region: string | null
+  readonly region: string | null
 
   /**
    * The language of the Honkai Star Rail account.
    *
-   * @public
    */
-  public readonly lang: LanguageEnum
+  private lang: LanguageEnum
 
   /**
    * Create a new instance of HonkaiStarRail.
    *
-   * @public
    * @constructor
    * @param {IHsrOptions} options - The options for the HonkaiStarRail instance.
    */
@@ -122,10 +109,13 @@ export class HonkaiStarRail {
    * Create a new instance of HonkaiStarRail using a Hoyolab account.
    * If `uid` is not provided in the `options`, the account with the highest level will be used.
    *
-   * @public
-   * @static
    * @param {IHsrOptions} options - The options for the HonkaiStarRail instance.
    * @returns {Promise<HonkaiStarRail>} - A promise that resolves with a new HonkaiStarRail instance.
+   *
+   * @remarks
+   * If an object is instantiated from this method but options.cookie.cookieTokenV2 is not set,
+   * it will throw an error. This method will access an Endpoint that contains a list of game accounts,
+   * which requires the cookieTokenV2 option.
    */
   static async create(options: IHsrOptions): Promise<HonkaiStarRail> {
     let game: IGame | null = null
@@ -141,6 +131,24 @@ export class HonkaiStarRail {
     const hsr = new HonkaiStarRail(options)
     hsr.account = game
     return hsr
+  }
+
+  /**
+   * Setter for the account property. Prevents from changing the value once set
+   * @param game The game object to set as the account.
+   */
+  public set account(game: IGame | null) {
+    if (this.account === null && game !== null) {
+      this._account = game
+    }
+  }
+
+  /**
+   * Getter for the account property.
+   * @returns {IGame | null} The current value of the account property.
+   */
+  public get account(): IGame | null {
+    return this._account
   }
 
   /**

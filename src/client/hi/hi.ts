@@ -7,6 +7,7 @@ import { IHi3Options } from './hi.interface'
 import { DEFAULT_REFERER } from '../../routes'
 import { getHi3Region } from './hi.helper'
 import { GamesEnum, Hoyolab, IGame } from '../hoyolab'
+import { HoyoAPIError } from '../../error'
 
 /**
  * Class representing the Honkai Impact 3rd game.
@@ -19,8 +20,6 @@ export class HonkaiImpact {
   /**
    * The Daily module for the Honkai Impact 3rd game.
    *
-   * @public
-   * @readonly
    */
   readonly daily: DailyModule
 
@@ -35,53 +34,43 @@ export class HonkaiImpact {
   /**
    * The cookie used for authentication.
    *
-   * @public
-   * @readonly
    */
   readonly cookie: ICookie
 
   /**
    * The request object used to make HTTP requests.
    *
-   * @public
-   * @readonly
    */
-  readonly request: HTTPRequest
+  private request: HTTPRequest
 
   /**
    * HoyYolab account object
    *
-   * @public
    */
-  public account: IGame | null = null
+  private _account: IGame | null = null
 
   /**
    * The UID of the Honkai Impact 3rd account.
    *
-   * @public
    */
-  public uid: number | null
+  readonly uid: number | null
 
   /**
    * The region of the Honkai Impact 3rd account.
    *
-   * @public
    */
-  public region: string | null
+  readonly region: string | null
 
   /**
    * The language of the Honkai Impact 3rd account.
    *
-   * @public
    */
-  public lang: LanguageEnum
+  private lang: LanguageEnum
 
   /**
    * Create a new instance of HonkaiImpact.
    *
-   * @public
-   * @constructor
-   * @param {IHi3Options} options - The options for the HonkaiImpact instance.
+   * @param options The options object used to configure the object.
    */
   constructor(options: IHi3Options) {
     const cookie: ICookie =
@@ -122,25 +111,51 @@ export class HonkaiImpact {
    * Create a new instance of HonkaiImpact using a Hoyolab account.
    * If `uid` is not provided in the `options`, the account with the highest level will be used.
    *
-   * @public
-   * @static
-   * @param {IHi3Options} options - The options for the HonkaiImpact instance.
+   * @param options The options object used to configure the object.
+   * @throws {HoyoAPIError} Error Wnen the CookieTokenV2 is not set.
    * @returns {Promise<HonkaiImpact>} - A promise that resolves with a new HonkaiImpact instance.
+   *
+   * @remarks
+   * If an object is instantiated from this method but options.cookie.cookieTokenV2 is not set,
+   * it will throw an error. This method will access an Endpoint that contains a list of game accounts,
+   * which requires the cookieTokenV2 option.
    */
   static async create(options: IHi3Options): Promise<HonkaiImpact> {
-    let game: IGame | null = null
-    if (typeof options.uid === 'undefined') {
-      const hoyolab = new Hoyolab({
-        cookie: options.cookie,
-      })
+    try {
+      let game: IGame | null = null
+      if (typeof options.uid === 'undefined') {
+        const hoyolab = new Hoyolab({
+          cookie: options.cookie,
+        })
 
-      game = await hoyolab.gameAccount(GamesEnum.HONKAI_IMPACT)
-      options.uid = parseInt(game.game_uid)
-      options.region = getHi3Region(parseInt(game.game_uid))
+        game = await hoyolab.gameAccount(GamesEnum.HONKAI_IMPACT)
+        options.uid = parseInt(game.game_uid)
+        options.region = getHi3Region(parseInt(game.game_uid))
+      }
+      const hi = new HonkaiImpact(options)
+      hi.account = game
+      return hi
+    } catch (error: any) {
+      throw new HoyoAPIError(error.message)
     }
-    const hi = new HonkaiImpact(options)
-    hi.account = game
-    return hi
+  }
+
+  /**
+   * Setter for the account property. Prevents from changing the value once set
+   * @param game The game object to set as the account.
+   */
+  public set account(game: IGame | null) {
+    if (this.account === null && game !== null) {
+      this._account = game
+    }
+  }
+
+  /**
+   * Getter for the account property.
+   * @returns {IGame | null} The current value of the account property.
+   */
+  public get account(): IGame | null {
+    return this._account
   }
 
   /**
