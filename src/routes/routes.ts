@@ -89,4 +89,11 @@ export const HSR_RECORD_INDEX_API = `${BBS_API}/game_record/hkrpg/api/index`
 export const HSR_RECORD_NOTE_API = `${BBS_API}/game_record/hkrpg/api/note`
 export const HSR_RECORD_FORGOTTEN_HALL_API = `${BBS_API}/game_record/hkrpg/api/challenge`
 
+/* Honkai Impact Battle Chronicles */
+export const HI_RECORD_INDEX_API = `${BBS_API}/game_record/honkai3rd/api/index`
+export const HI_RECORD_CHARACTER_API = `${BBS_API}/game_record/honkai3rd/api/characters`
+export const HI_RECORD_ABYSS_API = `${BBS_API}/game_record/honkai3rd/api/latestOldAbyssReport`
+export const HI_RECORD_ELYSIAN_API = `${BBS_API}/game_record/honkai3rd/api/godWar`
+export const HI_RECORD_ARENA_API = `${BBS_API}/game_record/honkai3rd/api/battleFieldReport`
+
 /* c8 ignore stop */
