@@ -8,6 +8,7 @@ import { DEFAULT_REFERER } from '../../routes'
 import { getHi3Region } from './hi.helper'
 import { GamesEnum, Hoyolab, IGame } from '../hoyolab'
 import { HoyoAPIError } from '../../error'
+import { HIRecordModule } from './record'
 
 /**
  * Class representing the Honkai Impact 3rd game.
@@ -30,6 +31,12 @@ export class HonkaiImpact {
    * @readonly
    */
   readonly redeem: RedeemModule
+
+  /**
+   * The `HIRecordModule` object provides an interface to interact with the user record feature in Honkai Star Rails.
+   *
+   */
+  readonly record: HIRecordModule
 
   /**
    * The cookie used for authentication.
@@ -102,6 +109,12 @@ export class HonkaiImpact {
       this.request,
       this.lang,
       GamesEnum.HONKAI_IMPACT,
+      this.region,
+      this.uid,
+    )
+    this.record = new HIRecordModule(
+      this.request,
+      this.lang,
       this.region,
       this.uid,
     )
