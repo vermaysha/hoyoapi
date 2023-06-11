@@ -24,7 +24,7 @@ export interface ICookie {
   /**
    * The value of the "cookieTokenV2" cookie
    */
-  cookieTokenV2: string
+  cookieTokenV2?: string | null
 
   /**
    * The value of the "accountId" cookie, if it exists.
