@@ -65,9 +65,15 @@ export class GenshinRecordModule {
       })
       .setDs(true)
 
-    const res = (await this.request.send(GENSHIN_RECORD_INDEX_API)).data
+    const res = await this.request.send(GENSHIN_RECORD_INDEX_API)
 
-    return res as IGenshinRecord
+    if (res.retcode !== 0) {
+      throw new HoyoAPIError(
+        'Failed to retrieve data, please double-check the provided UID.',
+      )
+    }
+
+    return res.data as IGenshinRecord
   }
 
   /**
@@ -93,10 +99,15 @@ export class GenshinRecordModule {
       })
       .setDs(true)
 
-    const res = (await this.request.send(GENSHIN_RECORD_CHARACTER_API, 'POST'))
-      .data
+    const res = await this.request.send(GENSHIN_RECORD_CHARACTER_API, 'POST')
 
-    return res as IGenshinCharacters
+    if (res.retcode !== 0) {
+      throw new HoyoAPIError(
+        'Failed to retrieve data, please double-check the provided UID.',
+      )
+    }
+
+    return res.data as IGenshinCharacters
   }
 
   /**
@@ -124,11 +135,18 @@ export class GenshinRecordModule {
       })
       .setDs()
 
-    const res = (
-      await this.request.send(GENSHIN_RECORD_AVATAR_BASIC_INFO_API, 'POST')
-    ).data
+    const res = await this.request.send(
+      GENSHIN_RECORD_AVATAR_BASIC_INFO_API,
+      'POST',
+    )
 
-    return res as IGenshinCharacterSummary
+    if (res.retcode !== 0) {
+      throw new HoyoAPIError(
+        'Failed to retrieve data, please double-check the provided UID.',
+      )
+    }
+
+    return res.data as IGenshinCharacterSummary
   }
 
   /**
@@ -162,9 +180,15 @@ export class GenshinRecordModule {
       })
       .setDs()
 
-    const res = (await this.request.send(GENSHIN_RECORD_SPIRAL_ABYSS_API)).data
+    const res = await this.request.send(GENSHIN_RECORD_SPIRAL_ABYSS_API)
 
-    return res as IGenshinSpiralAbyss
+    if (res.retcode !== 0) {
+      throw new HoyoAPIError(
+        'Failed to retrieve data, please double-check the provided UID.',
+      )
+    }
+
+    return res.data as IGenshinSpiralAbyss
   }
 
   /**
@@ -187,8 +211,14 @@ export class GenshinRecordModule {
       })
       .setDs()
 
-    const res = (await this.request.send(GENSHIN_RECORD_DAILY_NOTE_API)).data
+    const res = await this.request.send(GENSHIN_RECORD_DAILY_NOTE_API)
 
-    return res as IGenshinDailyNote
+    if (res.retcode !== 0) {
+      throw new HoyoAPIError(
+        'Failed to retrieve data, please double-check the provided UID.',
+      )
+    }
+
+    return res.data as IGenshinDailyNote
   }
 }

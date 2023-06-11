@@ -61,12 +61,19 @@ export class GenshinDiaryModule {
         region: this.region,
         uid: this.uid,
         month,
+        lang: this.lang,
       })
       .setDs()
 
-    const res = (await this.request.send(GENSHIN_DIARY_LIST_API)).data
+    const res = await this.request.send(GENSHIN_DIARY_LIST_API)
 
-    return res as IGenshinDiaryInfo
+    if (res.retcode !== 0) {
+      throw new HoyoAPIError(
+        'Failed to retrieve data, please double-check the provided UID.',
+      )
+    }
+
+    return res.data as IGenshinDiaryInfo
   }
 
   /**
@@ -109,22 +116,28 @@ export class GenshinDiaryModule {
           type,
           current_page: page,
           page_size: 100,
+          lang: this.lang,
         })
         .setDs()
 
-      const res = (await (
-        await this.request.send(GENSHIN_DIARY_DETAIL_API)
-      ).data) as IGenshinDiaryDetail
+      const res = await this.request.send(GENSHIN_DIARY_DETAIL_API)
 
-      responses.uid = res.uid
-      responses.region = res.region
-      responses.optional_month = res.optional_month
-      responses.nickname = res.nickname
-      responses.data_month = res.data_month
-      responses.current_page = res.current_page
-      responses.list = [...(responses.list ?? []), ...res.list]
+      if (res.retcode !== 0) {
+        throw new HoyoAPIError(
+          'Failed to retrieve data, please double-check the provided UID.',
+        )
+      }
+      const data = res.data as IGenshinDiaryDetail
 
-      if (res.list.length < 1) {
+      responses.uid = data.uid
+      responses.region = data.region
+      responses.optional_month = data.optional_month
+      responses.nickname = data.nickname
+      responses.data_month = data.data_month
+      responses.current_page = data.current_page
+      responses.list = [...(responses.list ?? []), ...data.list]
+
+      if (data.list.length < 1) {
         next = false
       }
 

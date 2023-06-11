@@ -9,6 +9,7 @@ import { getGenshinRegion } from './gi.helper'
 import { GamesEnum, Hoyolab, IGame } from '../hoyolab'
 import { GenshinRecordModule, SpiralAbyssScheduleEnum } from './record'
 import { DiaryEnum, GenshinDiaryModule, DiaryMonthEnum } from './diary'
+import { HoyoAPIError } from '../../error'
 
 /**
  * The `Genshin` class provides an interface to interact with Genshin Impact-related features on the Mihoyo website.
@@ -45,9 +46,8 @@ export class GenshinImpact {
   /**
    * HoyYolab account object
    *
-   * @public
    */
-  public account: IGame | null = null
+  private _account: IGame | null = null
 
   /**
    * The cookie object to be used in requests.
@@ -57,30 +57,27 @@ export class GenshinImpact {
   /**
    * The `Request` object used to make requests.
    */
-  readonly request: HTTPRequest
+  private request: HTTPRequest
 
   /**
    * The UID of the user, if available.
    */
-  public uid: number | null
+  readonly uid: number | null
 
   /**
    * The region of the user, if available.
    */
-  public region: string | null
+  readonly region: string | null
 
   /**
    * The language to be used in requests.
    */
-  public lang: LanguageEnum
+  private lang: LanguageEnum
 
   /**
    * Constructs a new `Genshin` object.
+   *
    * @param options The options object used to configure the object.
-   * @param options.cookie The cookie string or object to be used in requests.
-   * @param options.uid The UID of the user.
-   * @param options.region The region of the user.
-   * @param options.lang The language to be used in requests.
    */
   constructor(options: IGenshinOptions) {
     const cookie: ICookie =
@@ -133,27 +130,51 @@ export class GenshinImpact {
    * Create a new instance of the GenshinImpact class asynchronously.
    *
    * @param options The options object used to configure the object.
-   * @param options.cookie The cookie string or object to be used in requests.
-   * @param options.lang The language to be used in requests.
-   * @returns A promise that resolves with a new Genshin instance.
+   * @throws {HoyoAPIError} Error Wnen the CookieTokenV2 is not set.
+   * @returns {Promise<GenshinImpact>} A promise that resolves with a new Genshin instance.
+   *
+   * @remarks
+   * If an object is instantiated from this method but options.cookie.cookieTokenV2 is not set,
+   * it will throw an error. This method will access an Endpoint that contains a list of game accounts,
+   * which requires the cookieTokenV2 option.
    */
   static async create(options: IGenshinOptions): Promise<GenshinImpact> {
-    let game: IGame | null = null
+    try {
+      let game: IGame | null = null
 
-    if (typeof options.uid === 'undefined') {
-      const hoyolab = new Hoyolab({
-        cookie: options.cookie,
-      })
+      if (typeof options.uid === 'undefined') {
+        const hoyolab = new Hoyolab({
+          cookie: options.cookie,
+        })
 
-      game = await hoyolab.gameAccount(GamesEnum.GENSHIN_IMPACT)
-      options.uid = parseInt(game.game_uid)
-      options.region = getGenshinRegion(parseInt(game.game_uid))
+        game = await hoyolab.gameAccount(GamesEnum.GENSHIN_IMPACT)
+        options.uid = parseInt(game.game_uid)
+      }
+
+      const gi = new GenshinImpact(options)
+      gi.account = game
+      return gi
+    } catch (error: any) {
+      throw new HoyoAPIError(error.message)
     }
+  }
 
-    const gi = new GenshinImpact(options)
-    gi.account = game
+  /**
+   * Setter for the account property. Prevents from changing the value once set
+   * @param game The game object to set as the account.
+   */
+  public set account(game: IGame | null) {
+    if (this.account === null && game !== null) {
+      this._account = game
+    }
+  }
 
-    return gi
+  /**
+   * Getter for the account property.
+   * @returns {IGame | null} The current value of the account property.
+   */
+  public get account(): IGame | null {
+    return this._account
   }
 
   /**
