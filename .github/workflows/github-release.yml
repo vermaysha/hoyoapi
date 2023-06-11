@@ -1,4 +1,4 @@
-name: Main
+name: Release to Github
 
 on:
   push:
@@ -30,5 +30,3 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: dist/
