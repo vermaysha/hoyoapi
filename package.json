@@ -1,6 +1,6 @@
 {
   "name": "hoyoapi",
-  "version": "0.0.3-beta.0",
+  "version": "0.0.4-beta.0",
   "description": "HoYoAPI is an unofficial API Wrapper library developed to facilitate communication with the official HoYoLab API.",
   "exports": {
     ".": {
