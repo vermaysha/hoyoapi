@@ -7,6 +7,7 @@ import { IHsrOptions } from './hsr.interface'
 import { DEFAULT_REFERER } from '../../routes'
 import { getHsrRegion } from './hsr.helper'
 import { GamesEnum, Hoyolab, IGame } from '../hoyolab'
+import { HSRRecordModule } from './record'
 
 /**
  * Class representing the Honkai Star Rail game.
@@ -27,6 +28,12 @@ export class HonkaiStarRail {
    *
    */
   readonly redeem: RedeemModule
+
+  /**
+   * The `HSRRecordModule` object provides an interface to interact with the user record feature in Honkai Star Rails.
+   *
+   */
+  readonly record: HSRRecordModule
 
   /**
    * The cookie used for authentication.
@@ -100,6 +107,12 @@ export class HonkaiStarRail {
       this.request,
       this.lang,
       GamesEnum.HONKAI_STAR_RAIL,
+      this.region,
+      this.uid,
+    )
+    this.record = new HSRRecordModule(
+      this.request,
+      this.lang,
       this.region,
       this.uid,
     )
