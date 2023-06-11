@@ -16,11 +16,16 @@ export class HoyoAPIError extends Error {
   public readonly message: string
 
   /**
+   * The error code
+   */
+  public readonly code?: number
+
+  /**
    * Constructs a new instance of the HoyolabError class with the specified message.
    *
    * @param message The message to associate with this error.
    */
-  constructor(message: string) {
+  constructor(message: string, code?: number) {
     super(message)
 
     /**
@@ -32,6 +37,8 @@ export class HoyoAPIError extends Error {
      * The message associated with this error.
      */
     this.message = message
+
+    this.code = code
 
     // Capture the stack trace of this error instance.
     Error.captureStackTrace(this, this.constructor)
