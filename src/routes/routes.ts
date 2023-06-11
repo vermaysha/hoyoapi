@@ -34,6 +34,8 @@ const getEventBaseUrl = (game: GamesEnum) => {
   ) {
     return PUBLIC_API
   }
+
+  return ''
 }
 
 const getActId = (game: GamesEnum) => {

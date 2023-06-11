@@ -48,7 +48,7 @@ export class DailyModule {
     const res: IDailyInfo = (await this.request.send(this.dailyInfoUrl))
       .data as IDailyInfo
 
-    if (typeof res?.first_bind === 'undefined') {
+    if (typeof res?.first_bind === 'undefined' || res?.first_bind === null) {
       res.first_bind = false
     }
 
