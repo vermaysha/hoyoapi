@@ -6,3 +6,5 @@ api.text
 api
 coverage
 .env
+docs/.docusaurus
+docs/build
