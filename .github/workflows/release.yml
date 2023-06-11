@@ -37,7 +37,7 @@ jobs:
 
       # Build application
       - name: Build application
-        run: npm run build:ts
+        run: npm run build
 
       # Configure Git
       - name: Git configuration
