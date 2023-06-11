@@ -45,14 +45,22 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const res: IDailyInfo = (await this.request.send(this.dailyInfoUrl))
-      .data as IDailyInfo
+    const res = await this.request.send(this.dailyInfoUrl)
 
-    if (typeof res?.first_bind === 'undefined' || res?.first_bind === null) {
-      res.first_bind = false
+    if (res.retcode !== 0 || !res.data) {
+      throw new HoyoAPIError(
+        res.message ??
+          'Failed to retrieve data, please double-check the provided UID.',
+      )
     }
 
-    if (typeof res.month_last_day === 'undefined') {
+    const data = res.data as IDailyInfo
+
+    if (typeof data?.first_bind === 'undefined' || data?.first_bind === null) {
+      data.first_bind = false
+    }
+
+    if (typeof data.month_last_day === 'undefined') {
       const today = new Date()
       const lastDayOfMonth = new Date(
         today.getFullYear(),
@@ -60,22 +68,22 @@ export class DailyModule {
         0,
       ).getDate()
 
-      res.month_last_day = today.getDate() === lastDayOfMonth
+      data.month_last_day = today.getDate() === lastDayOfMonth
     }
 
-    if (typeof res.sign_cnt_missed === 'undefined') {
-      res.sign_cnt_missed = 0
+    if (typeof data.sign_cnt_missed === 'undefined') {
+      data.sign_cnt_missed = 0
     }
 
-    if (typeof res.short_sign_day === 'undefined') {
-      res.short_sign_day = 0
+    if (typeof data.short_sign_day === 'undefined') {
+      data.short_sign_day = 0
     }
 
-    if (res.region === '' && this.region) {
-      res.region = this.region
+    if (data.region === '' && this.region) {
+      data.region = this.region
     }
 
-    return res
+    return data
   }
 
   /**
@@ -90,29 +98,38 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const res: any = (await this.request.send(this.dailyRewardUrl)).data
+    const res = await this.request.send(this.dailyRewardUrl)
 
-    if (typeof res.now === 'undefined') {
-      res.now = Math.round(new Date().getTime() / 1000).toString()
+    if (res.retcode !== 0 || !res.data) {
+      throw new HoyoAPIError(
+        res.message ??
+          'Failed to retrieve data, please double-check the provided UID.',
+      )
+    }
+
+    const data = res.data as IDailyRewards
+
+    if (typeof data.now === 'undefined') {
+      data.now = Math.round(new Date().getTime() / 1000).toString()
     }
 
     if (this.game === GamesEnum.GENSHIN_IMPACT) {
-      res.biz = 'hk4e'
+      data.biz = 'hk4e'
     } else if (this.game === GamesEnum.HONKAI_IMPACT) {
-      res.biz = 'hk4e'
+      data.biz = 'hk4e'
     } else if (this.game === GamesEnum.HONKAI_STAR_RAIL) {
-      res.biz = 'hkrpg'
+      data.biz = 'hkrpg'
       /* c8 ignore next 3 */
     } else {
-      res.biz = ''
+      data.biz = ''
     }
     /* c8 ignore next 3 */
 
-    if (typeof res.resign === 'undefined') {
-      res.resign = false
+    if (typeof data.resign === 'undefined') {
+      data.resign = false
     }
 
-    return res as IDailyRewards
+    return data
   }
 
   /**
