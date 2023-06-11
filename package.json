@@ -7,6 +7,26 @@
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.js",
       "types": "./dist/types/index.d.ts"
+    },
+    "./gi": {
+      "import": "./dist/esm/client/gi/index.mjs",
+      "require": "./dist/cjs/client/gi/index.js",
+      "types": "./dist/types/client/gi/index.d.ts"
+    },
+    "./hi": {
+      "import": "./dist/esm/client/hi/index.mjs",
+      "require": "./dist/cjs/client/hi/index.js",
+      "types": "./dist/types/client/hi/index.d.ts"
+    },
+    "./hsr": {
+      "import": "./dist/esm/client/hsr/index.mjs",
+      "require": "./dist/cjs/client/hsr/index.js",
+      "types": "./dist/types/client/hsr/index.d.ts"
+    },
+    "./hoyolab": {
+      "import": "./dist/esm/client/hoyolab/index.mjs",
+      "require": "./dist/cjs/client/hoyolab/index.js",
+      "types": "./dist/types/client/hoyolab/index.d.ts"
     }
   },
   "types": "./dist/types/index.d.ts",
