@@ -102,6 +102,7 @@ export class Hoyolab {
     if (!res.data || !data.list) {
       throw new HoyoAPIError(
         res.message ?? 'There is no game account on this hoyolab account !',
+        res.retcode,
       )
     }
 

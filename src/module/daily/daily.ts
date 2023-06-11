@@ -51,6 +51,7 @@ export class DailyModule {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
+        res.retcode,
       )
     }
 
@@ -104,6 +105,7 @@ export class DailyModule {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
+        res.retcode,
       )
     }
 
