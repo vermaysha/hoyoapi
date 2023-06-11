@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>201/201</span>
+                <span class='fraction'>209/209</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>5/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>201/201</span>
+                <span class='fraction'>209/209</span>
             </div>
         
             
@@ -264,7 +264,15 @@
 <a name='L199'></a><a href='#L199'>199</a>
 <a name='L200'></a><a href='#L200'>200</a>
 <a name='L201'></a><a href='#L201'>201</a>
-<a name='L202'></a><a href='#L202'>202</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -281,19 +289,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -394,6 +389,9 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -406,6 +404,24 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -486,67 +502,54 @@ export class HonkaiStarRail {
   /**
    * The Daily module for the Honkai Star Rail game.
    *
-   * @public
-   * @readonly
    */
   readonly daily: DailyModule
 &nbsp;
   /**
    * The Redeem module for the Honkai Star Rail game.
    *
-   * @public
-   * @readonly
    */
   readonly redeem: RedeemModule
 &nbsp;
   /**
    * The cookie used for authentication.
    *
-   * @public
-   * @readonly
    */
   readonly cookie: ICookie
 &nbsp;
   /**
    * The request object used to make HTTP requests.
    *
-   * @public
-   * @readonly
    */
-  readonly request: HTTPRequest
+  private request: HTTPRequest
 &nbsp;
   /**
    * HoyYolab account object
    *
-   * @public
    */
-  public account: IGame | null = null
+  private _account: IGame | null = null
 &nbsp;
   /**
    * The UID of the Honkai Star Rail account.
    *
-   * @public
    */
-  public readonly uid: number | null
+  readonly uid: number | null
 &nbsp;
   /**
    * The region of the Honkai Star Rail account.
    *
-   * @public
    */
-  public readonly region: string | null
+  readonly region: string | null
 &nbsp;
   /**
    * The language of the Honkai Star Rail account.
    *
-   * @public
    */
-  public readonly lang: LanguageEnum
+  private lang: LanguageEnum
 &nbsp;
   /**
    * Create a new instance of HonkaiStarRail.
    *
-   * @public
    * @constructor
    * @param {IHsrOptions} options - The options for the HonkaiStarRail instance.
    */
@@ -589,10 +592,13 @@ export class HonkaiStarRail {
    * Create a new instance of HonkaiStarRail using a Hoyolab account.
    * If `uid` is not provided in the `options`, the account with the highest level will be used.
    *
-   * @public
-   * @static
    * @param {IHsrOptions} options - The options for the HonkaiStarRail instance.
    * @returns {Promise&lt;HonkaiStarRail&gt;} - A promise that resolves with a new HonkaiStarRail instance.
+   *
+   * @remarks
+   * If an object is instantiated from this method but options.cookie.cookieTokenV2 is not set,
+   * it will throw an error. This method will access an Endpoint that contains a list of game accounts,
+   * which requires the cookieTokenV2 option.
    */
   static async create(options: IHsrOptions): Promise&lt;HonkaiStarRail&gt; {
     let game: IGame | null = null
@@ -608,6 +614,24 @@ export class HonkaiStarRail {
     const hsr = new HonkaiStarRail(options)
     hsr.account = game
     return hsr
+  }
+&nbsp;
+  /**
+   * Setter for the account property. Prevents from changing the value once set
+   * @param game The game object to set as the account.
+   */
+  public set account(game: IGame | null) {
+    if (this.account === null &amp;&amp; game !== null) {
+      this._account = game
+    }
+  }
+&nbsp;
+  /**
+   * Getter for the account property.
+   * @returns {IGame | null} The current value of the account property.
+   */
+  public get account(): IGame | null {
+    return this._account
   }
 &nbsp;
   /**
@@ -673,7 +697,7 @@ export class HonkaiStarRail {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-10T12:28:55.228Z
+                at 2023-06-11T02:16:08.152Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
