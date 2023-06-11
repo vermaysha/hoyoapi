@@ -21,13 +21,7 @@ export interface IHIWeapon {
   icon: string
 }
 
-export interface IHIStigmata {
-  id: number
-  name: string
-  max_rarity: number
-  rarity: number
-  icon: string
-}
+export interface IHIStigmata extends IHIWeapon {}
 
 export interface IHICharacter {
   character: {

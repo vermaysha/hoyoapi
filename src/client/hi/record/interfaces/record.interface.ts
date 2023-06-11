@@ -22,7 +22,7 @@ export interface IHIStat {
     level_of_ow: string
     latest_type: string
     latest_level: string
-    latest_area: 1
+    latest_area: number
     level_of_greedy: string
   }
   weapon_number: number
