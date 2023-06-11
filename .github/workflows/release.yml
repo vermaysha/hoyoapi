@@ -92,11 +92,3 @@ jobs:
         with:
           release-type: node
           package-name: release-please-action
-
-      - uses: softprops/action-gh-release@v1
-        name: Create release for Github
-        with:
-          files: dist/
-          prerelease: ${{ env.PRERELEASE }}
-          draft: false
-          generate_release_notes: true
