@@ -16,7 +16,7 @@ import {
 import { ForgottenHallScheduleEnum } from './record.enum'
 
 /**
- * GenshinRecordModule class provides methods to interact with Genshin Impact's record module endpoints.
+ * HSRRecordModule class provides methods to interact with Honkai Star Rail record module endpoints.
  *
  * @class
  * @internal
