@@ -1,4 +1,4 @@
-name: Release package to NPM
+name: Release package
 on:
   workflow_dispatch:
     inputs:
@@ -44,23 +44,26 @@ jobs:
         run: |
           git config --global user.email "34608589+vermaysha@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
-      # Bump package version
+
+      # Bump package version to NPM
       # Use tag latest
-      - name: Bump release version
+      - name: Bump release version to NPM
         if: startsWith(github.event.inputs.release-type, 'pre') != true
         run: |
           echo "NEW_VERSION=$(npm --no-git-tag-version version $RELEASE_TYPE)" >> $GITHUB_ENV
           echo "RELEASE_TAG=latest" >> $GITHUB_ENV
+          echo "PRERELEASE=false >> $GITHUB_ENV"
         env:
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
 
-      # Bump package pre-release version
+      # Bump package pre-release version to NPM
       # Use tag beta for pre-release versions
-      - name: Bump pre-release version
+      - name: Bump pre-release version to NPM
         if: startsWith(github.event.inputs.release-type, 'pre')
         run: |
           echo "NEW_VERSION=$(npm --no-git-tag-version --preid=beta version $RELEASE_TYPE)" >> $GITHUB_ENV
           echo "RELEASE_TAG=beta" >> $GITHUB_ENV
+          echo "PRERELEASE=true >> $GITHUB_ENV"
         env:
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
 
@@ -70,6 +73,7 @@ jobs:
           git add "package.json"
           git commit -m "chore: release ${{ env.NEW_VERSION }}"
           git tag ${{ env.NEW_VERSION }}
+
       # Publish version to public repository
       - name: Publish
         run: npm publish --verbose --access public --tag ${{ env.RELEASE_TAG }}
@@ -84,6 +88,15 @@ jobs:
           git push origin && git push --tags
 
       - uses: google-github-actions/release-please-action@v3
+        name: Release package to NPM
         with:
           release-type: node
           package-name: release-please-action
+
+      - uses: softprops/action-gh-release@v1
+        name: Create release for Github
+        with:
+          files: dist/
+          prerelease: ${{ env.PRERELEASE }}
+          draft: false
+          generate_release_notes: true
