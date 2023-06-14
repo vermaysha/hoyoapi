@@ -11,7 +11,7 @@
 <code-block title="NPM">
 
 ```sh [npm]
-$ npm install @vermaysha/hoyolab-api
+$ npm install hoyoapi
 ```
 
 </code-block>
@@ -19,7 +19,7 @@ $ npm install @vermaysha/hoyolab-api
 <code-block title="YARN">
 
 ```sh [yarn]
-$ yarn add @vermaysha/hoyolab-api
+$ yarn add hoyoapi
 ```
 
 </code-block>
