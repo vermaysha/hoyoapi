@@ -62,7 +62,9 @@ export class HSRRecordModule {
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
-        'Failed to retrieve data, please double-check the provided UID.',
+        res.message ??
+          'Failed to retrieve data, please double-check the provided UID.',
+        res.retcode,
       )
     }
 
@@ -94,7 +96,8 @@ export class HSRRecordModule {
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
-        'Failed to retrieve data, please double-check the provided UID.',
+        res.message ??
+          'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
       )
     }
@@ -126,7 +129,8 @@ export class HSRRecordModule {
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
-        'Failed to retrieve data, please double-check the provided UID.',
+        res.message ??
+          'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
       )
     }
@@ -170,7 +174,9 @@ export class HSRRecordModule {
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
-        'Failed to retrieve data, please double-check the provided UID.',
+        res.message ??
+          'Failed to retrieve data, please double-check the provided UID.',
+        res.retcode,
       )
     }
 
