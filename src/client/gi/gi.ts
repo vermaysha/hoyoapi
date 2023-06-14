@@ -155,7 +155,7 @@ export class GenshinImpact {
       gi.account = game
       return gi
     } catch (error: any) {
-      throw new HoyoAPIError(error.message)
+      throw new HoyoAPIError(error.message, error.code)
     }
   }
 
