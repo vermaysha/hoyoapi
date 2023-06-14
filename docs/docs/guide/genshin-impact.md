@@ -7,7 +7,7 @@ There are several methods to instantiate an object from the GenshinImpact class.
 The following method will instantiate an object with the provided data.
 
 ```ts
-import { GenshinImpact, LanguageEnum } from '@vermaysha/hoyolab-api'
+import { GenshinImpact, LanguageEnum } from 'hoyoapi'
 
 const genshin = new GenshinImpact({
   cookie: 'YOUR COOKIE HERE', // Required. Cookie can be string or object, see the api refeence below
@@ -19,7 +19,7 @@ const genshin = new GenshinImpact({
 Meanwhile, the method below will instantiate an object with some automatically filled data like UID, and will return a Promise.
 
 ```ts
-import { GenshinImpact, LanguageEnum } from '@vermaysha/hoyolab-api'
+import { GenshinImpact, LanguageEnum } from 'hoyoapi'
 
 const genshin = GenshinImpact.create({
   cookie: 'YOUR COOKIE HERE', // Required. Cookie can be string or object, see the api refeence below
@@ -30,7 +30,7 @@ const genshin = GenshinImpact.create({
 ## Game Records
 
 ```ts
-import { GenshinImpact, LanguageEnum } from '@vermaysha/hoyolab-api'
+import { GenshinImpact, LanguageEnum } from 'hoyoapi'
 
 async function main() {
   const genshin = new GenshinImpact({
@@ -60,7 +60,7 @@ main()
 ## Daily Checkin
 
 ```ts
-import { GenshinImpact, LanguageEnum } from '@vermaysha/hoyolab-api'
+import { GenshinImpact, LanguageEnum } from 'hoyoapi'
 
 async function main() {
   const genshin = new GenshinImpact({
@@ -91,7 +91,7 @@ main()
 ## Redeem Code
 
 ```ts
-import { GenshinImpact, LanguageEnum } from '@vermaysha/hoyolab-api'
+import { GenshinImpact, LanguageEnum } from 'hoyoapi'
 
 async function main() {
   const genshin = new GenshinImpact({
