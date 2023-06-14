@@ -265,7 +265,10 @@ export class HTTPRequest {
     const result = req.response
 
     /* c8 ignore start */
-    if ([-1004, -2016].includes(result.retcode) && this.retries <= 60) {
+    if (
+      [-1004, -2016, -500004].includes(result.retcode) &&
+      this.retries <= 60
+    ) {
       this.retries++
       await delay(1)
       return this.send(url, method)
