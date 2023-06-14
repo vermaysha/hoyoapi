@@ -11,8 +11,8 @@
         <a href="https://www.npmjs.com/package/hoyoapi" target="_blank">
             <img src="https://img.shields.io/npm/dt/hoyoapi.svg?style=flat-square" alt="Total Downloads" />
         </a>
-        <a href="LICENSE">
-            <img src="https://img.shields.io/github/license/wavyflow/hoyoapi?style=flat-square" alt="LICENSE" />
+        <a href="https://github.com/wavyflow/hoyoapi/blob/master/LICENSE">
+            <img src="https://img.shields.io/github/license/wavyflow/hoyoapi?style=flat-square" alt="MIT License" />
         </a>
     </p>
     <p>
