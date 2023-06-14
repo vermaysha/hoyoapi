@@ -3,7 +3,7 @@
 ## Usage
 
 ```ts
-import { Hoyolab, LanguageEnum } from '@vermaysha/hoyolab-api'
+import { Hoyolab, LanguageEnum } from 'hoyoapi'
 
 const hoyolab = new Hoyolab({
   cookie: 'YOUR COOKIE HERE',
@@ -14,7 +14,7 @@ const hoyolab = new Hoyolab({
 ## Retrive Games Accounts
 
 ```ts
-import { GamesEnum, Hoyolab, LanguageEnum } from '@vermaysha/hoyolab-api'
+import { GamesEnum, Hoyolab, LanguageEnum } from 'hoyoapi'
 
 async function main() {
   const hoyolab = new Hoyolab({
