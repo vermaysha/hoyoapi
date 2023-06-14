@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.08% </span>
+                <span class="strong">87.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>204/229</span>
+                <span class='fraction'>204/234</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.08% </span>
+                <span class="strong">87.17% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>204/229</span>
+                <span class='fraction'>204/234</span>
             </div>
         
             
@@ -292,7 +292,12 @@
 <a name='L227'></a><a href='#L227'>227</a>
 <a name='L228'></a><a href='#L228'>228</a>
 <a name='L229'></a><a href='#L229'>229</a>
-<a name='L230'></a><a href='#L230'>230</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -367,6 +372,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -402,6 +408,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -437,6 +444,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -485,6 +493,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -512,6 +521,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -592,7 +602,8 @@ export class GenshinRecordModule {
 &nbsp;
     if (res.retcode !== 0) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >      throw new HoyoAPIError(</span>
-<span class="cstat-no" title="statement not covered" >        'Failed to retrieve data, please double-check the provided UID.',</span>
+<span class="cstat-no" title="statement not covered" >        res.message ??</span>
+<span class="cstat-no" title="statement not covered" >          'Failed to retrieve data, please double-check the provided UID.',</span>
 <span class="cstat-no" title="statement not covered" >        res.retcode,</span>
 <span class="cstat-no" title="statement not covered" >      )</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
@@ -627,7 +638,8 @@ export class GenshinRecordModule {
 &nbsp;
     if (res.retcode !== 0) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >      throw new HoyoAPIError(</span>
-<span class="cstat-no" title="statement not covered" >        'Failed to retrieve data, please double-check the provided UID.',</span>
+<span class="cstat-no" title="statement not covered" >        res.message ??</span>
+<span class="cstat-no" title="statement not covered" >          'Failed to retrieve data, please double-check the provided UID.',</span>
 <span class="cstat-no" title="statement not covered" >        res.retcode,</span>
 <span class="cstat-no" title="statement not covered" >      )</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
@@ -667,7 +679,8 @@ export class GenshinRecordModule {
 &nbsp;
     if (res.retcode !== 0) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >      throw new HoyoAPIError(</span>
-<span class="cstat-no" title="statement not covered" >        'Failed to retrieve data, please double-check the provided UID.',</span>
+<span class="cstat-no" title="statement not covered" >        res.message ??</span>
+<span class="cstat-no" title="statement not covered" >          'Failed to retrieve data, please double-check the provided UID.',</span>
 <span class="cstat-no" title="statement not covered" >        res.retcode,</span>
 <span class="cstat-no" title="statement not covered" >      )</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
@@ -710,7 +723,8 @@ export class GenshinRecordModule {
 &nbsp;
     if (res.retcode !== 0) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >      throw new HoyoAPIError(</span>
-<span class="cstat-no" title="statement not covered" >        'Failed to retrieve data, please double-check the provided UID.',</span>
+<span class="cstat-no" title="statement not covered" >        res.message ??</span>
+<span class="cstat-no" title="statement not covered" >          'Failed to retrieve data, please double-check the provided UID.',</span>
 <span class="cstat-no" title="statement not covered" >        res.retcode,</span>
 <span class="cstat-no" title="statement not covered" >      )</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
@@ -742,7 +756,8 @@ export class GenshinRecordModule {
 &nbsp;
     if (res.retcode !== 0) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >      throw new HoyoAPIError(</span>
-<span class="cstat-no" title="statement not covered" >        'Failed to retrieve data, please double-check the provided UID.',</span>
+<span class="cstat-no" title="statement not covered" >        res.message ??</span>
+<span class="cstat-no" title="statement not covered" >          'Failed to retrieve data, please double-check the provided UID.',</span>
 <span class="cstat-no" title="statement not covered" >        res.retcode,</span>
 <span class="cstat-no" title="statement not covered" >      )</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
@@ -757,7 +772,7 @@ export class GenshinRecordModule {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-14T04:11:41.735Z
+                at 2023-06-14T11:50:01.167Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
