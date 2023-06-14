@@ -149,7 +149,7 @@ export class HonkaiImpact {
       hi.account = game
       return hi
     } catch (error: any) {
-      throw new HoyoAPIError(error.message)
+      throw new HoyoAPIError(error.message, error.code)
     }
   }
 
