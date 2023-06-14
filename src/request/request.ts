@@ -267,7 +267,7 @@ export class HTTPRequest {
     /* c8 ignore start */
     if (
       [-1004, -2016, -500_004].includes(result.retcode) &&
-      this.retries <= 60
+      this.retries <= 120
     ) {
       this.retries++
       await delay(1)
