@@ -26,6 +26,7 @@ export class Cookie {
       'account_id',
       'cookie_token',
       'account_id_v2',
+      'cookie_mid_v2',
       'cookie_token_v2',
       'mi18nLang',
     ]
@@ -90,9 +91,13 @@ export class Cookie {
         }
 
         if (
-          ['cookieToken', 'accountId', 'cookieTokenV2', 'accountIdV2'].includes(
-            key,
-          )
+          [
+            'cookieToken',
+            'accountId',
+            'cookieTokenV2',
+            'accountIdV2',
+            'accountMidV2',
+          ].includes(key)
         ) {
           key = toSnakeCase(key)
         }
