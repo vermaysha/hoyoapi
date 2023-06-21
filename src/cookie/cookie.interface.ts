@@ -39,7 +39,7 @@ export interface ICookie {
   /**
    * The value of the "accountMidV2" cookie, if it exists.
    */
-  accountMidV2?: number
+  accountMidV2?: string
 
   /**
    * The value of the "mi18nLang" cookie, if it exists.
