@@ -37,6 +37,11 @@ export interface ICookie {
   accountIdV2?: number
 
   /**
+   * The value of the "accountMidV2" cookie, if it exists.
+   */
+  accountMidV2?: number
+
+  /**
    * The value of the "mi18nLang" cookie, if it exists.
    * This can be either a string or a LanguageEnum value.
    */
