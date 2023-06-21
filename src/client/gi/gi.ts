@@ -98,6 +98,9 @@ export class GenshinImpact {
       options.lang = Language.parseLang(cookie.mi18nLang)
     }
 
+    // Parse language to prevent language error
+    options.lang = Language.parseLang(options.lang)
+
     this.request = new HTTPRequest(Cookie.parseCookie(this.cookie))
     this.request.setReferer(DEFAULT_REFERER)
     this.request.setLang(options.lang)
