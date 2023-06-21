@@ -47,7 +47,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/wavyflow/hoyoapi/tree/master/docs/',
         },
         blog: false,
         theme: {
@@ -76,7 +76,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/wavyflo/wavyflow',
+            href: 'https://github.com/wavyflow/hoyoapi',
             label: 'GitHub',
             position: 'right',
           },
