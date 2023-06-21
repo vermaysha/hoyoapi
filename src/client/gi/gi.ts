@@ -10,6 +10,7 @@ import { GamesEnum, Hoyolab, IGame } from '../hoyolab'
 import { GenshinRecordModule, SpiralAbyssScheduleEnum } from './record'
 import { DiaryEnum, GenshinDiaryModule, DiaryMonthEnum } from './diary'
 import { HoyoAPIError } from '../../error'
+import { GenshinTCGModule } from './tcg'
 
 /**
  * The `Genshin` class provides an interface to interact with Genshin Impact-related features on the Mihoyo website.
@@ -42,6 +43,12 @@ export class GenshinImpact {
    *
    */
   readonly diary: GenshinDiaryModule
+
+  /**
+   * The `GenshinTCGModule` object provides an interface to interact with the user diary feature in Genshin Impact.
+   *
+   */
+  readonly tcg: GenshinTCGModule
 
   /**
    * HoyYolab account object
@@ -119,6 +126,12 @@ export class GenshinImpact {
       this.uid,
     )
     this.diary = new GenshinDiaryModule(
+      this.request,
+      this.lang,
+      this.region,
+      this.uid,
+    )
+    this.tcg = new GenshinTCGModule(
       this.request,
       this.lang,
       this.region,

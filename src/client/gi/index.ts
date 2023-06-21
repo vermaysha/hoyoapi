@@ -5,3 +5,4 @@ export * from './gi.interface'
 // Export module interfaces
 export * from './diary'
 export * from './record'
+export * from './tcg'
