@@ -46,6 +46,7 @@ For Yarn <br/>
 | Battle Chronicles | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Diary             | :white_check_mark: | :x:                | :x:                |
 | Daily Note        | :white_check_mark: | :x:                | :white_check_mark: |
+| TCG               | :white_check_mark: | :x:                | :x:                |
 
 ## How to obtain HoYoLab Cookie
 
