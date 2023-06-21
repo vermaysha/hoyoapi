@@ -112,7 +112,7 @@ export interface IGenshinTCGMatchs {
   favourite_matches: any[]
 }
 
-export interface IGenshinTCGDeck {
+export interface IGenshinTCGDeckDetail {
   id: number
   name: string
   is_valid: boolean
@@ -120,9 +120,14 @@ export interface IGenshinTCGDeck {
   action_cards: IGenshinTCGCard[]
 }
 
+export interface IGenshinTCGDeckList {
+  deck: IGenshinTCGDeckDetail
+  win_cnt: number
+}
+
 export interface IGenshinTCGRecord {
   basic: {
-    schedule: IGenshinTCGScheduleBasic
+    schedule: IGenshinTCGScheduleBasic | null
     nickname: string
     uid: string
     win_cnt: number
@@ -130,13 +135,15 @@ export interface IGenshinTCGRecord {
     has_data: boolean
   }
   honor_character: any[]
-  deck_list: {
-    deck: IGenshinTCGDeck
-    win_cnt: number
-  }[]
+  deck_list: IGenshinTCGDeckList[]
   recommend_url: string
 }
 
 export interface IGenshinTCGSchedule {
   schedule_list: IGenshinTCGScheduleBasic[]
+}
+
+export interface IGenshinTCGDeck {
+  basic: IGenshinTCGChallangeBasic
+  deck_detail: IGenshinTCGDeckList
 }

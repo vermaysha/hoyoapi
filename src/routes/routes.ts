@@ -89,6 +89,7 @@ export const GENSHIN_TCG_CARDLIST = `${BBS_API}/game_record/genshin/api/gcg/card
 export const GENSHIN_TCG_MATCHLIST = `${BBS_API}/game_record/genshin/api/gcg/matchList`
 export const GENSHIN_TCG_CHALLANGE_SCHEDULE = `${BBS_API}/game_record/genshin/api/gcg/challenge/schedule`
 export const GENSHIN_TCG_CHALLANGE_RECORD = `${BBS_API}/game_record/genshin/api/gcg/challenge/record`
+export const GENSHIN_TCG_CHALLANGE_DECK = `${BBS_API}/game_record/genshin/api/gcg/challenge/deck`
 
 /* HSR Battle Chronicles */
 export const HSR_RECORD_CHARACTER_API = `${BBS_API}/game_record/hkrpg/api/avatar/info`

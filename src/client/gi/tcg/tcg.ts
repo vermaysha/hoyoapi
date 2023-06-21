@@ -4,6 +4,7 @@ import { HTTPRequest } from '../../../request'
 import {
   GENSHIN_TCG_BASICINFO,
   GENSHIN_TCG_CARDLIST,
+  GENSHIN_TCG_CHALLANGE_DECK,
   GENSHIN_TCG_CHALLANGE_RECORD,
   GENSHIN_TCG_CHALLANGE_SCHEDULE,
   GENSHIN_TCG_MATCHLIST,
@@ -11,6 +12,7 @@ import {
 import {
   IGenshinTCGBasicInfo,
   IGenshinTCGCards,
+  IGenshinTCGDeck,
   IGenshinTCGMatchs,
   IGenshinTCGRecord,
   IGenshinTCGSchedule,
@@ -176,7 +178,7 @@ export class GenshinTCGModule {
    * Retrieves the challenge record for the Genshin Impact TCG.
    *
    * @returns {Promise<IGenshinTCGRecord>} The Genshin Impact TCG challenge record.
-   * @param schedule_id Schedule ID
+   * @param schedule_id Schedule ID from {@link GenshinTCGModule.challengeSchedule | GenshinTCGModule.challengeSchedule()}
    * @throws {HoyoAPIError} If there is an error retrieving the data.
    */
   async challengeRecord(schedule_id: number): Promise<IGenshinTCGRecord> {
@@ -200,5 +202,40 @@ export class GenshinTCGModule {
     }
 
     return res.data as IGenshinTCGRecord
+  }
+
+  /**
+   * Retrieves the challenge deck for the Genshin Impact TCG.
+   *
+   * @returns {Promise<IGenshinTCGDeck>} The Genshin Impact TCG challenge record.
+   * @param schedule_id Schedule ID from {@link GenshinTCGModule.challengeSchedule | GenshinTCGModule.challengeSchedule()}
+   * @param deck_id Deck ID from {@link GenshinTCGModule.challengeRecord | GenshinTCGModule.challengeRecord()}
+   * @throws {HoyoAPIError} If there is an error retrieving the data.
+   */
+  async challangeDeck(
+    schedule_id: number,
+    deck_id: number,
+  ): Promise<IGenshinTCGDeck> {
+    this.request
+      .setQueryParams({
+        server: this.region,
+        role_id: this.uid,
+        lang: this.lang,
+        schedule_id,
+        deck_id,
+      })
+      .setDs(true)
+
+    const res = await this.request.send(GENSHIN_TCG_CHALLANGE_DECK)
+
+    if (res.retcode !== 0) {
+      throw new HoyoAPIError(
+        res.message ??
+          'Failed to retrieve data, please double-check the provided UID.',
+        res.retcode,
+      )
+    }
+
+    return res.data as IGenshinTCGDeck
   }
 }
