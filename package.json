@@ -59,7 +59,7 @@
   },
   "homepage": "https://github.com/wavyflow/hoyoapi#readme",
   "lint-staged": {
-    "*": [
+    "*.{ts,tsx,js,json}": [
       "prettier --write --ignore-unknown"
     ],
     "*.{ts,tsx}": "eslint --fix"
