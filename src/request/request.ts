@@ -12,6 +12,7 @@ import { HoyoAPIError } from '../error'
 import { delay, generateDS } from './request.helper'
 import { Cache } from '../cache'
 import { createHash } from 'crypto'
+import { Language } from '../language'
 
 /**
  * Class for handling HTTP requests with customizable headers, body, and parameters.
@@ -113,7 +114,7 @@ export class HTTPRequest {
    * @returns {this}
    */
   setLang(lang: string): this {
-    this.headers['x-rpc-language'] = lang
+    this.headers['x-rpc-language'] = Language.parseLang(lang)
 
     return this
   }
