@@ -14,6 +14,7 @@ import {
   IGenshinTCGMatchs,
   IGenshinTCGRecord,
   IGenshinTCGSchedule,
+  IGenshinTCGScheduleBasic,
 } from './tcg.interface'
 
 /**
@@ -146,10 +147,10 @@ export class GenshinTCGModule {
   /**
    * Retrieves the challenge schedule for the Genshin Impact TCG.
    *
-   * @returns {Promise<IGenshinTCGSchedule>} The Genshin Impact TCG challenge schedule.
+   * @returns {Promise<IGenshinTCGScheduleBasic[]>} The Genshin Impact TCG challenge schedule.
    * @throws {HoyoAPIError} If there is an error retrieving the data.
    */
-  async challengeSchedule(): Promise<IGenshinTCGSchedule> {
+  async challengeSchedule(): Promise<IGenshinTCGScheduleBasic[]> {
     this.request
       .setQueryParams({
         server: this.region,
@@ -168,21 +169,23 @@ export class GenshinTCGModule {
       )
     }
 
-    return res.data as IGenshinTCGSchedule
+    return (res.data as IGenshinTCGSchedule).schedule_list
   }
 
   /**
    * Retrieves the challenge record for the Genshin Impact TCG.
    *
    * @returns {Promise<IGenshinTCGRecord>} The Genshin Impact TCG challenge record.
+   * @param schedule_id Schedule ID
    * @throws {HoyoAPIError} If there is an error retrieving the data.
    */
-  async challengeRecord(): Promise<IGenshinTCGRecord> {
+  async challengeRecord(schedule_id: number): Promise<IGenshinTCGRecord> {
     this.request
       .setQueryParams({
         server: this.region,
         role_id: this.uid,
         lang: this.lang,
+        schedule_id,
       })
       .setDs(true)
 
