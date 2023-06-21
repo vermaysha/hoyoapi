@@ -16,7 +16,21 @@ import {
   IGenshinTCGSchedule,
 } from './tcg.interface'
 
+/**
+ * Represents a module for the Genshin Impact TCG.
+ *
+ * @class
+ * @internal
+ * @category Module
+ */
 export class GenshinTCGModule {
+  /**
+   * Creates an instance of the GenshinTCGModule.
+   * @param request - The HTTP request object.
+   * @param lang - The language enumeration for the module.
+   * @param region - The region string or null.
+   * @param uid - The UID number or null.
+   */
   constructor(
     private request: HTTPRequest,
     private lang: LanguageEnum,
@@ -24,7 +38,13 @@ export class GenshinTCGModule {
     private uid: number | null,
   ) {}
 
-  async basicInfo() {
+  /**
+   * Retrieves basic information for the Genshin Impact TCG.
+   *
+   * @returns {Promise<IGenshinTCGBasicInfo>} The Genshin Impact TCG basic information.
+   * @throws {HoyoAPIError} If there is an error retrieving the data.
+   */
+  async basicInfo(): Promise<IGenshinTCGBasicInfo> {
     this.request
       .setQueryParams({
         server: this.region,
@@ -46,7 +66,13 @@ export class GenshinTCGModule {
     return res.data as IGenshinTCGBasicInfo
   }
 
-  async cards() {
+  /**
+   * Retrieves the cards for the Genshin Impact TCG.
+   *
+   * @returns {Promise<IGenshinTCGCards>} The Genshin Impact TCG cards.
+   * @throws {HoyoAPIError} If there is an error retrieving the data.
+   */
+  async cards(): Promise<IGenshinTCGCards> {
     const perPage = 100
     let next = true
     let offset = 0
@@ -89,7 +115,13 @@ export class GenshinTCGModule {
     return cardLists as IGenshinTCGCards
   }
 
-  async matchs() {
+  /**
+   * Retrieves the match data for the Genshin Impact TCG.
+   *
+   * @returns {Promise<IGenshinTCGMatchs>} The Genshin Impact TCG match data.
+   * @throws {HoyoAPIError} If there is an error retrieving the data.
+   */
+  async matchs(): Promise<IGenshinTCGMatchs> {
     this.request
       .setQueryParams({
         server: this.region,
@@ -111,7 +143,13 @@ export class GenshinTCGModule {
     return res.data as IGenshinTCGMatchs
   }
 
-  async challengeSchedule() {
+  /**
+   * Retrieves the challenge schedule for the Genshin Impact TCG.
+   *
+   * @returns {Promise<IGenshinTCGSchedule>} The Genshin Impact TCG challenge schedule.
+   * @throws {HoyoAPIError} If there is an error retrieving the data.
+   */
+  async challengeSchedule(): Promise<IGenshinTCGSchedule> {
     this.request
       .setQueryParams({
         server: this.region,
@@ -133,7 +171,13 @@ export class GenshinTCGModule {
     return res.data as IGenshinTCGSchedule
   }
 
-  async challengeRecord() {
+  /**
+   * Retrieves the challenge record for the Genshin Impact TCG.
+   *
+   * @returns {Promise<IGenshinTCGRecord>} The Genshin Impact TCG challenge record.
+   * @throws {HoyoAPIError} If there is an error retrieving the data.
+   */
+  async challengeRecord(): Promise<IGenshinTCGRecord> {
     this.request
       .setQueryParams({
         server: this.region,
