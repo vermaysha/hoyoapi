@@ -16,7 +16,7 @@ import {
   IGenshinTCGSchedule,
 } from './tcg.interface'
 
-export class GenshinTCG {
+export class GenshinTCGModule {
   constructor(
     private request: HTTPRequest,
     private lang: LanguageEnum,
