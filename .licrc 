@@ -1,3 +1,4 @@
+# IMPORTANT!: ALL SECTIONS ARE MANDATORY
 [licenses]
 # This indicates which are the only licenses that Licensebat will accept.
 # The rest will be flagged as not allowed.
@@ -10,7 +11,7 @@ accepted = ["MIT", "MSC", "BSD"]
 
 [dependencies]
 # This will allow users to flag some dependencies so that Licensebat will not check for their license.
-ignored=[]
+ignored=["ignored_dep1", "ignored_dep2"]
 # If set to true, Licensebat will ignore the dev dependencies.
 ignore_dev_dependencies = true
 # If set to true, Licensebat will ignore the optional dependencies.
