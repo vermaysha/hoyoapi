@@ -9,6 +9,7 @@ export const cookie: ICookie = {
   ltuid: Number(process.env.LTUID),
   cookieTokenV2: process.env.COOKIE_TOKEN_V2 ?? '',
   accountIdV2: Number(process.env.ACCOUNT_ID_V2),
+  accountMidV2: process.env.ACCOUNT_MID_V2,
 }
 
 export const hsr = async () => {

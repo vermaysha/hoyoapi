@@ -43,6 +43,7 @@ jobs:
           envkey_ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           envkey_COOKIE_TOKEN: ${{ secrets.COOKIE_TOKEN }}
           envkey_ACCOUNT_ID_V2: ${{ secrets.ACCOUNT_ID_V2 }}
+          envkey_ACCOUNT_MID_V2: ${{ secrets.ACCOUNT_MID_V2 }}
           envkey_COOKIE_TOKEN_V2: ${{ secrets.COOKIE_TOKEN_V2 }}
 
       - name: Lint
