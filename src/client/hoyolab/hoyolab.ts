@@ -56,6 +56,9 @@ export class Hoyolab {
       options.lang = Language.parseLang(cookie.mi18nLang)
     }
 
+    // Parse language to prevent language error
+    options.lang = Language.parseLang(options.lang)
+
     /**
      * The underlying `Request` object used to make HTTP requests.
      * @type {Request}
