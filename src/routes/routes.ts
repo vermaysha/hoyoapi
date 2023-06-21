@@ -83,6 +83,13 @@ export const GENSHIN_RECORD_DAILY_NOTE_API = `${BBS_API}/game_record/genshin/api
 export const GENSHIN_DIARY_LIST_API = `${HK4E_API}/event/ysledgeros/month_info`
 export const GENSHIN_DIARY_DETAIL_API = `${HK4E_API}/event/ysledgeros/month_detail`
 
+/* Genshin TCG Data*/
+export const GENSHIN_TCG_BASICINFO = `${BBS_API}/game_record/genshin/api/gcg/basicInfo`
+export const GENSHIN_TCG_CARDLIST = `${BBS_API}/game_record/genshin/api/gcg/cardList`
+export const GENSHIN_TCG_MATCHLIST = `${BBS_API}/game_record/genshin/api/gcg/matchList`
+export const GENSHIN_TCG_CHALLANGE_SCHEDULE = `${BBS_API}/game_record/genshin/api/gcg/challenge/schedule`
+export const GENSHIN_TCG_CHALLANGE_RECORD = `${BBS_API}/game_record/genshin/api/gcg/challenge/record`
+
 /* HSR Battle Chronicles */
 export const HSR_RECORD_CHARACTER_API = `${BBS_API}/game_record/hkrpg/api/avatar/info`
 export const HSR_RECORD_INDEX_API = `${BBS_API}/game_record/hkrpg/api/index`
