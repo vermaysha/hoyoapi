@@ -108,7 +108,7 @@ export interface IGenshinTCGCards {
 export interface IGenshinTCGMatch extends IGesnhinTCGReplay {}
 
 export interface IGenshinTCGMatchs {
-  recent_matches: IGenshinTCGMatch
+  recent_matches: IGenshinTCGMatch[]
   favourite_matches: any[]
 }
 
