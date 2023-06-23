@@ -26,13 +26,13 @@ export class Cookie {
       'account_id',
       'cookie_token',
       'account_id_v2',
-      'cookie_mid_v2',
+      'account_mid_v2',
       'cookie_token_v2',
       'mi18nLang',
     ]
 
     cookieString.split('; ').forEach((cookie) => {
-      const cookieSplited = cookie.trim().split('=')
+      const cookieSplited = cookie.trim().split(/=(?=.+)/)
 
       /* c8 ignore next 3 */
       if (keys.includes(cookieSplited[0]) === false) {
