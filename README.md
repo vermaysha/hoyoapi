@@ -58,6 +58,10 @@ For Yarn <br/>
 4. Once you've successfully ran the script, click the Click here to copy! button to copy the cookie.
 5. Finally, you can copy your cookie
 
+## About a cookieTokenV2
+
+cookieTokenV2 can be obtained on the redeem code page of each game, for example, [Genshin Impact Gift](https://genshin.hoyoverse.com/en/gift). However, it is important to note that cookieTokenV2 has a short expiration time, so if it has expired, it needs to be manually refreshed. It has been observed that every few days, when logging in to the game Hoyoverse, it always requests reauthentication first.
+
 ## Documentation
 
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](https://wavyflow.github.io/hoyoapi/ 'Go to project documentation')
