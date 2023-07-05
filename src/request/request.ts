@@ -163,10 +163,31 @@ export class HTTPRequest {
         }
 
         const client = request(hostname, options, (res: IncomingMessage) => {
-          // Reject HTTP error response
-          if (res.statusCode && res.statusCode >= 400 && res.statusCode < 600) {
+          if (res.statusCode === 429) {
+            // If the status code is 429, return a resolved promise with a response object
+            return resolve({
+              response: {
+                data: null,
+                message: 'Too Many Request',
+                retcode: 429,
+              },
+              status: {
+                code: 429,
+                message: 'Too Many Request',
+              },
+              headers: res.headers,
+            })
+          } else if (
+            res.statusCode &&
+            res.statusCode >= 400 &&
+            res.statusCode < 600
+          ) {
+            // If the status code is between 400 and 599 (inclusive), reject the promise with an HoyoAPIError
             reject(
-              new HoyoAPIError(`HTTP ${res.statusCode}: ${res.statusMessage}`),
+              new HoyoAPIError(
+                `HTTP ${res.statusCode}: ${res.statusMessage}`,
+                res.statusCode,
+              ),
             )
           }
 
@@ -267,7 +288,7 @@ export class HTTPRequest {
 
     /* c8 ignore start */
     if (
-      [-1004, -2016, -500_004].includes(result.retcode) &&
+      [-1004, -2016, -500_004, 429].includes(result.retcode) &&
       this.retries <= 120
     ) {
       this.retries++
