@@ -22,7 +22,8 @@ export interface ICookie {
   cookieToken?: string | null
 
   /**
-   * The value of the "cookieTokenV2" cookie
+   * The value of the "cookieTokenV2" cookie.
+   * CookieTokenV2 has a short expiration time and, so far, cannot be refreshed, so it is best to avoid using methods that rely on CookieTokenV2.
    */
   cookieTokenV2?: string | null
 
