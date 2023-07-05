@@ -44,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wavyflow/hoyoapi.git"
+    "url": "git+https://github.com/vermaysha/hoyoapi.git"
   },
   "keywords": [
     "hoyolab-api",
@@ -55,9 +55,9 @@
   "author": "Ashary Vermaysha",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wavyflow/hoyoapi/issues"
+    "url": "https://github.com/vermaysha/hoyoapi/issues"
   },
-  "homepage": "https://github.com/wavyflow/hoyoapi#readme",
+  "homepage": "https://github.com/vermaysha/hoyoapi#readme",
   "lint-staged": {
     "*.{ts,tsx,js,json}": [
       "prettier --write --ignore-unknown"

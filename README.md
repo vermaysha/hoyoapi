@@ -2,26 +2,26 @@
   <h1>HoYoAPI - TypeScript/JavaScript HoYoAPI</h1>
 
   <p>
-        <a href="https://github.com/wavyflow/hoyoapi/actions/workflows/test.yml" target="_blank">
-            <img src="https://img.shields.io/github/actions/workflow/status/wavyflow/hoyoapi/test.yml?branch=master&amp;label=test&amp;style=flat-square" alt="GitHub Test Action Status" />
+        <a href="https://github.com/vermaysha/hoyoapi/actions/workflows/test.yml" target="_blank">
+            <img src="https://img.shields.io/github/actions/workflow/status/vermaysha/hoyoapi/test.yml?branch=master&amp;label=test&amp;style=flat-square" alt="GitHub Test Action Status" />
         </a>
         <a href="https://hoyoapi-coverage.netlify.app/" target="_blank">
-            <img src="https://raw.githubusercontent.com/wavyflow/hoyoapi/gh-pages/badges.svg" alt="Coverage" />
+            <img src="https://raw.githubusercontent.com/vermaysha/hoyoapi/gh-pages/badges.svg" alt="Coverage" />
         </a>
         <a href="https://www.npmjs.com/package/hoyoapi" target="_blank">
             <img src="https://img.shields.io/npm/dt/hoyoapi.svg?style=flat-square" alt="Total Downloads" />
         </a>
-        <a href="https://github.com/wavyflow/hoyoapi/blob/master/LICENSE">
-            <img src="https://img.shields.io/github/license/wavyflow/hoyoapi?style=flat-square" alt="MIT License" />
+        <a href="https://github.com/vermaysha/hoyoapi/blob/master/LICENSE">
+            <img src="https://img.shields.io/github/license/vermaysha/hoyoapi?style=flat-square" alt="MIT License" />
         </a>
     </p>
     <p>
       <a href="https://www.npmjs.com/package/hoyoapi" target="_blank">
           <img src="https://img.shields.io/npm/v/hoyoapi.svg?style=flat-square" alt="Latest Version on Packagist" />
       </a>
-      <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/wavyflow/hoyoapi/master?style=flat-square&label=github" />
-      <a href="https://github.com/wavyflow/hoyoapi/releases/latest" target="_blank">
-          <img src="https://img.shields.io/github/release-date/wavyflow/hoyoapi?style=flat-square" alt="GitHub Release Date - Published_At" />
+      <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/vermaysha/hoyoapi/master?style=flat-square&label=github" />
+      <a href="https://github.com/vermaysha/hoyoapi/releases/latest" target="_blank">
+          <img src="https://img.shields.io/github/release-date/vermaysha/hoyoapi?style=flat-square" alt="GitHub Release Date - Published_At" />
       </a>
       <img alt="node-current" src="https://img.shields.io/node/v/hoyoapi?style=flat-square" />
     </p>
@@ -64,7 +64,7 @@ cookieTokenV2 can be obtained on the redeem code page of each game, for example,
 
 ## Documentation
 
-[![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](https://wavyflow.github.io/hoyoapi/ 'Go to project documentation')
+[![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](https://vermaysha.github.io/hoyoapi/ 'Go to project documentation')
 
 ## License
 
