@@ -153,6 +153,11 @@ export class GenshinImpact {
    * If an object is instantiated from this method but options.cookie.cookieTokenV2 is not set,
    * it will throw an error. This method will access an Endpoint that contains a list of game accounts,
    * which requires the cookieTokenV2 option.
+
+   * @remarks
+   * Because CookieTokenV2 has a short expiration time and cannot be refreshed so far.
+   * It is evident that every few days, when logging in, it always requests authentication first.
+   * Therefore, this method that uses CookieTokenV2 is not suitable if filled statically.
    */
   static async create(options: IGenshinOptions): Promise<GenshinImpact> {
     try {
