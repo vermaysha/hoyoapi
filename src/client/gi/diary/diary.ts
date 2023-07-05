@@ -65,13 +65,26 @@ export class GenshinDiaryModule {
       })
       .setDs()
 
-    const res = await this.request.send(GENSHIN_DIARY_LIST_API)
+    const {
+      response: res,
+      params,
+      body,
+      headers,
+    } = await this.request.send(GENSHIN_DIARY_LIST_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -122,13 +135,26 @@ export class GenshinDiaryModule {
         })
         .setDs()
 
-      const res = await this.request.send(GENSHIN_DIARY_DETAIL_API)
+      const {
+        response: res,
+        params,
+        body,
+        headers,
+      } = await this.request.send(GENSHIN_DIARY_DETAIL_API)
 
       if (res.retcode !== 0) {
         throw new HoyoAPIError(
           res.message ??
             'Failed to retrieve data, please double-check the provided UID.',
           res.retcode,
+          {
+            response: res,
+            request: {
+              body,
+              headers,
+              params,
+            },
+          },
         )
       }
       const data = res.data as IGenshinDiaryDetail
