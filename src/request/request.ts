@@ -181,6 +181,8 @@ export class HTTPRequest {
                 message: 'Too Many Request',
               },
               headers: res.headers,
+              body: this.body,
+              params: this.params,
             })
           } else if (
             res.statusCode &&
@@ -301,7 +303,7 @@ export class HTTPRequest {
 
     /* c8 ignore start */
     if (
-      [-1004, -2016, -500_004, 429].includes(result.retcode) &&
+      [-1004, -2016, -500_004, 429].includes(req.response.retcode) &&
       this.retries <= 120
     ) {
       this.retries++
