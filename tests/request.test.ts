@@ -55,7 +55,7 @@ test('send() should return valid response', async (t) => {
   req.setDs()
   const res = await req.send('https://example.com?res', 'POST')
 
-  t.deepEqual(res, {
+  t.deepEqual(res.response, {
     data: null,
     message: '',
     retcode: -1,
@@ -101,7 +101,7 @@ test('send() should valid when decompress brotli compressed data', async (t) => 
   const req = new HTTPRequest()
   const res = await req.send('https://example.com')
 
-  t.deepEqual(res, expectedResponse)
+  t.deepEqual(res.response, expectedResponse)
 
   nock.restore()
 })
@@ -124,7 +124,7 @@ test('send() should valid when decompress deflate compressed data', async (t) =>
   const req = new HTTPRequest()
   const res = await req.send('https://example.com')
 
-  t.deepEqual(res, expectedResponse)
+  t.deepEqual(res.response, expectedResponse)
 
   nock.restore()
 })
@@ -147,7 +147,7 @@ test('send() should valid when decompress gzip compressed data', async (t) => {
   const req = new HTTPRequest()
   const res = await req.send('https://example.com')
 
-  t.deepEqual(res, expectedResponse)
+  t.deepEqual(res.response, expectedResponse)
 
   nock.restore()
 })

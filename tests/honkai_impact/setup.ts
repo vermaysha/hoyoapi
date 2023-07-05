@@ -3,12 +3,12 @@ import { HonkaiImpact, ICookie, LanguageEnum } from '../../src'
 config()
 
 export const cookie: ICookie = {
-  accountId: Number(process.env.ACCOUNT_ID),
+  accountId: parseInt(process.env.ACCOUNT_ID ?? '0'),
   cookieToken: process.env.COOKIE_TOKEN,
   ltoken: process.env.LTOKEN ?? '',
-  ltuid: Number(process.env.LTUID),
+  ltuid: parseInt(process.env.LTUID ?? '0'),
   cookieTokenV2: process.env.COOKIE_TOKEN_V2 ?? '',
-  accountIdV2: Number(process.env.ACCOUNT_ID_V2),
+  accountIdV2: parseInt(process.env.ACCOUNT_ID_V2 ?? '0'),
   accountMidV2: process.env.ACCOUNT_MID_V2,
 }
 
@@ -16,5 +16,6 @@ export const honkaiImpact = async () => {
   return await HonkaiImpact.create({
     cookie,
     lang: LanguageEnum.ENGLISH,
+    uid: parseInt(process.env.HI_UID ?? '0'),
   })
 }
