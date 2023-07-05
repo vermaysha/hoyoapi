@@ -45,6 +45,9 @@ jobs:
           envkey_ACCOUNT_ID_V2: ${{ secrets.ACCOUNT_ID_V2 }}
           envkey_ACCOUNT_MID_V2: ${{ secrets.ACCOUNT_MID_V2 }}
           envkey_COOKIE_TOKEN_V2: ${{ secrets.COOKIE_TOKEN_V2 }}
+          envkey_HI_UID: ${{ secrets.HI_UID }}
+          envkey_GI_UID: ${{ secrets.GI_UID }}
+          envkey_HSR_UID: ${{ secrets.HSR_UID }}
 
       - name: Lint
         run: npm run lint
