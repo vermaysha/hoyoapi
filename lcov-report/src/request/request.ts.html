@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.76% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>286/286</span>
+                <span class='fraction'>294/307</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">97.67% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>42/42</span>
+                <span class='fraction'>42/43</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.76% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>286/286</span>
+                <span class='fraction'>294/307</span>
             </div>
         
             
@@ -349,7 +349,28 @@
 <a name='L284'></a><a href='#L284'>284</a>
 <a name='L285'></a><a href='#L285'>285</a>
 <a name='L286'></a><a href='#L286'>286</a>
-<a name='L287'></a><a href='#L287'>287</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -515,7 +536,28 @@
 <span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -524,7 +566,7 @@
 <span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">82x</span>
 <span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-yes">67x</span>
@@ -800,10 +842,31 @@ export class HTTPRequest {
         }
 &nbsp;
         const client = request(hostname, options, (res: IncomingMessage) =&gt; {
-          // Reject HTTP error response
-          if (res.statusCode &amp;&amp; res.statusCode &gt;= 400 &amp;&amp; res.statusCode &lt; 600) {
+          if (res.statusCode === 429) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >            // If the status code is 429, return a resolved promise with a response object</span>
+<span class="cstat-no" title="statement not covered" >            return resolve({</span>
+<span class="cstat-no" title="statement not covered" >              response: {</span>
+<span class="cstat-no" title="statement not covered" >                data: null,</span>
+<span class="cstat-no" title="statement not covered" >                message: 'Too Many Request',</span>
+<span class="cstat-no" title="statement not covered" >                retcode: 429,</span>
+<span class="cstat-no" title="statement not covered" >              },</span>
+<span class="cstat-no" title="statement not covered" >              status: {</span>
+<span class="cstat-no" title="statement not covered" >                code: 429,</span>
+<span class="cstat-no" title="statement not covered" >                message: 'Too Many Request',</span>
+<span class="cstat-no" title="statement not covered" >              },</span>
+<span class="cstat-no" title="statement not covered" >              headers: res.headers,</span>
+<span class="cstat-no" title="statement not covered" >            })</span>
+          } else if (
+            res.statusCode &amp;&amp;
+            res.statusCode &gt;= 400 &amp;&amp;
+            res.statusCode &lt; 600
+          ) {
+            // If the status code is between 400 and 599 (inclusive), reject the promise with an HoyoAPIError
             reject(
-              new HoyoAPIError(`HTTP ${res.statusCode}: ${res.statusMessage}`),
+              new HoyoAPIError(
+                `HTTP ${res.statusCode}: ${res.statusMessage}`,
+                res.statusCode,
+              ),
             )
           }
 &nbsp;
@@ -904,7 +967,7 @@ export class HTTPRequest {
 &nbsp;
     /* c8 ignore start */
     if (
-      [-1004, -2016, -500_004].includes(result.retcode) &amp;&amp;
+      [-1004, -2016, -500_004, 429].includes(result.retcode) &amp;&amp;
       this.retries &lt;= 120
     ) {
       this.retries++
@@ -928,7 +991,7 @@ export class HTTPRequest {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-05T02:38:44.053Z
+                at 2023-07-05T02:41:04.299Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
