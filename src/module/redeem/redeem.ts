@@ -53,8 +53,8 @@ export class RedeemModule {
       sLangKey: this.lang,
     })
 
-    const res = await this.request.send(REDEEM_CLAIM_API, 'GET', 0)
+    const { response } = await this.request.send(REDEEM_CLAIM_API, 'GET', 0)
 
-    return res as IRedeemCode
+    return response as IRedeemCode
   }
 }

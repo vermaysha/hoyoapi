@@ -60,13 +60,26 @@ export class HIRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HI_RECORD_INDEX_API)
+    const {
+      response: res,
+      params,
+      body,
+      headers,
+    } = await this.request.send(HI_RECORD_INDEX_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -93,13 +106,26 @@ export class HIRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HI_RECORD_CHARACTER_API)
+    const {
+      response: res,
+      params,
+      body,
+      headers,
+    } = await this.request.send(HI_RECORD_CHARACTER_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -131,13 +157,26 @@ export class HIRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HI_RECORD_ABYSS_API)
+    const {
+      response: res,
+      params,
+      body,
+      headers,
+    } = await this.request.send(HI_RECORD_ABYSS_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -169,13 +208,26 @@ export class HIRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HI_RECORD_ARENA_API)
+    const {
+      response: res,
+      params,
+      body,
+      headers,
+    } = await this.request.send(HI_RECORD_ARENA_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -207,13 +259,26 @@ export class HIRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HI_RECORD_ELYSIAN_API)
+    const {
+      response: res,
+      params,
+      body,
+      headers,
+    } = await this.request.send(HI_RECORD_ELYSIAN_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 

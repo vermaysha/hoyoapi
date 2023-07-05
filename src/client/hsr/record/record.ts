@@ -58,13 +58,26 @@ export class HSRRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HSR_RECORD_CHARACTER_API)
+    const {
+      response: res,
+      body,
+      params,
+      headers,
+    } = await this.request.send(HSR_RECORD_CHARACTER_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -92,13 +105,26 @@ export class HSRRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HSR_RECORD_INDEX_API)
+    const {
+      response: res,
+      body,
+      params,
+      headers,
+    } = await this.request.send(HSR_RECORD_INDEX_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -125,13 +151,26 @@ export class HSRRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(HSR_RECORD_NOTE_API)
+    const {
+      response: res,
+      body,
+      params,
+      headers,
+    } = await this.request.send(HSR_RECORD_NOTE_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -170,13 +209,26 @@ export class HSRRecordModule {
       })
       .setDs()
 
-    const res = await this.request.send(HSR_RECORD_FORGOTTEN_HALL_API)
+    const {
+      response: res,
+      body,
+      params,
+      headers,
+    } = await this.request.send(HSR_RECORD_FORGOTTEN_HALL_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 

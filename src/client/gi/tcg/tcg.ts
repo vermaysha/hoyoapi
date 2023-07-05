@@ -56,13 +56,26 @@ export class GenshinTCGModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(GENSHIN_TCG_BASICINFO)
+    const {
+      response: res,
+      body,
+      headers,
+      params,
+    } = await this.request.send(GENSHIN_TCG_BASICINFO)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -94,13 +107,26 @@ export class GenshinTCGModule {
         })
         .setDs(true)
 
-      const res = await this.request.send(GENSHIN_TCG_CARDLIST)
+      const {
+        response: res,
+        body,
+        headers,
+        params,
+      } = await this.request.send(GENSHIN_TCG_CARDLIST)
 
       if (res.retcode !== 0) {
         throw new HoyoAPIError(
           res.message ??
             'Failed to retrieve data, please double-check the provided UID.',
           res.retcode,
+          {
+            response: res,
+            request: {
+              body,
+              headers,
+              params,
+            },
+          },
         )
       }
 
@@ -133,13 +159,26 @@ export class GenshinTCGModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(GENSHIN_TCG_MATCHLIST)
+    const {
+      response: res,
+      body,
+      headers,
+      params,
+    } = await this.request.send(GENSHIN_TCG_MATCHLIST)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -161,13 +200,26 @@ export class GenshinTCGModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(GENSHIN_TCG_CHALLANGE_SCHEDULE)
+    const {
+      response: res,
+      body,
+      headers,
+      params,
+    } = await this.request.send(GENSHIN_TCG_CHALLANGE_SCHEDULE)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -191,13 +243,26 @@ export class GenshinTCGModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(GENSHIN_TCG_CHALLANGE_RECORD)
+    const {
+      response: res,
+      body,
+      headers,
+      params,
+    } = await this.request.send(GENSHIN_TCG_CHALLANGE_RECORD)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -226,13 +291,26 @@ export class GenshinTCGModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(GENSHIN_TCG_CHALLANGE_DECK)
+    const {
+      response: res,
+      body,
+      headers,
+      params,
+    } = await this.request.send(GENSHIN_TCG_CHALLANGE_DECK)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 

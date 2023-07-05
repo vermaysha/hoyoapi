@@ -5,7 +5,6 @@ import type {
   HTTPBody,
   HTTPHeaders,
   HTTPQueryParams,
-  HTTPResponse,
   HTTPServerResponse,
 } from './request.inteface'
 import { HoyoAPIError } from '../error'
@@ -67,6 +66,12 @@ export class HTTPRequest {
    * The number of request attempts made.
    */
   private retries = 1
+
+  public http?: {
+    response?: object
+    request?: object
+    code?: number
+  }
 
   constructor(cookie?: string) {
     if (cookie) this.headers.Cookie = cookie
@@ -143,7 +148,7 @@ export class HTTPRequest {
     url: string,
     method: 'GET' | 'POST' = 'GET',
     ttl = 60,
-  ): Promise<HTTPResponse> {
+  ): Promise<HTTPServerResponse> {
     // Internal NodeJS Fetch
     const fetch = (url: string, method: string) => {
       return new Promise<HTTPServerResponse>((resolve, reject) => {
@@ -163,10 +168,41 @@ export class HTTPRequest {
         }
 
         const client = request(hostname, options, (res: IncomingMessage) => {
-          // Reject HTTP error response
-          if (res.statusCode && res.statusCode >= 400 && res.statusCode < 600) {
+          if (res.statusCode === 429) {
+            // If the status code is 429, return a resolved promise with a response object
+            return resolve({
+              response: {
+                data: null,
+                message: 'Too Many Request',
+                retcode: 429,
+              },
+              status: {
+                code: 429,
+                message: 'Too Many Request',
+              },
+              headers: res.headers,
+              body: this.body,
+              params: this.params,
+            })
+          } else if (
+            res.statusCode &&
+            res.statusCode >= 400 &&
+            res.statusCode < 600
+          ) {
+            // If the status code is between 400 and 599 (inclusive), reject the promise with an HoyoAPIError
             reject(
-              new HoyoAPIError(`HTTP ${res.statusCode}: ${res.statusMessage}`),
+              new HoyoAPIError(
+                `HTTP ${res.statusCode}: ${res.statusMessage}`,
+                res.statusCode,
+                {
+                  response: res.statusMessage,
+                  request: {
+                    params: this.params,
+                    body: this.body,
+                    headers: this.headers,
+                  },
+                },
+              ),
             )
           }
 
@@ -209,6 +245,8 @@ export class HTTPRequest {
                     message: res.statusMessage,
                   },
                   headers: res.headers,
+                  body: this.body,
+                  params: this.params,
                 })
               } catch (error) {
                 reject(
@@ -253,7 +291,7 @@ export class HTTPRequest {
 
     /* c8 ignore start */
     if (cachedResult) {
-      return cachedResult as HTTPResponse
+      return cachedResult as HTTPServerResponse
     }
     /* c8 ignore stop */
 
@@ -263,11 +301,9 @@ export class HTTPRequest {
 
     const req = await fetch(url, method)
 
-    const result = req.response
-
     /* c8 ignore start */
     if (
-      [-1004, -2016, -500_004].includes(result.retcode) &&
+      [-1004, -2016, -500_004, 429].includes(req.response.retcode) &&
       this.retries <= 120
     ) {
       this.retries++
@@ -280,7 +316,7 @@ export class HTTPRequest {
     this.body = {}
     this.params = {}
 
-    this.cache.set(cacheKey, result, ttl)
-    return result
+    this.cache.set(cacheKey, req, ttl)
+    return req
   }
 }
