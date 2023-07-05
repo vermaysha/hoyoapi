@@ -11,7 +11,7 @@ const config = {
   favicon: 'img/favicon-32x32.png',
 
   // Set the production url of your site here
-  url: 'https://wavyflow.github.io',
+  url: 'https://vermaysha.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/hoyoapi/',
@@ -20,7 +20,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'wavyflow', // Usually your GitHub org/user name.
+  organizationName: 'vermaysha', // Usually your GitHub org/user name.
   projectName: 'hoyoapi', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -46,7 +46,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/wavyflow/hoyoapi/tree/master/docs/',
+          editUrl: 'https://github.com/vermaysha/hoyoapi/tree/master/docs/',
         },
         blog: false,
         theme: {
@@ -75,7 +75,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/wavyflow/hoyoapi',
+            href: 'https://github.com/vermaysha/hoyoapi',
             label: 'GitHub',
             position: 'right',
           },
