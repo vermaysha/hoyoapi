@@ -45,13 +45,26 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const res = await this.request.send(this.dailyInfoUrl)
+    const {
+      response: res,
+      body,
+      headers,
+      params,
+    } = await this.request.send(this.dailyInfoUrl)
 
     if (res.retcode !== 0 || !res.data) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -99,13 +112,26 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const res = await this.request.send(this.dailyRewardUrl)
+    const {
+      response: res,
+      body,
+      headers,
+      params,
+    } = await this.request.send(this.dailyRewardUrl)
 
     if (res.retcode !== 0 || !res.data) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -186,7 +212,7 @@ export class DailyModule {
       })
       .setLang(this.lang)
 
-    const response = await this.request.send(this.dailySignUrl, 'POST', 0)
+    const { response } = await this.request.send(this.dailySignUrl, 'POST', 0)
 
     const info = await this.info()
     const reward = await this.reward()

@@ -98,7 +98,12 @@ export class Hoyolab {
       uid: this.cookie.ltuid,
       sLangKey: this.cookie.mi18nLang,
     })
-    const res = await this.request.send(USER_GAMES_LIST)
+    const {
+      response: res,
+      params,
+      body,
+      headers,
+    } = await this.request.send(USER_GAMES_LIST)
     const data = res.data as IGamesList
 
     /* c8 ignore next 5 */
@@ -106,6 +111,14 @@ export class Hoyolab {
       throw new HoyoAPIError(
         res.message ?? 'There is no game account on this hoyolab account !',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -148,9 +161,9 @@ export class Hoyolab {
         this.cookie.ltuid || this.cookie.accountId || this.cookie.accountIdV2,
     })
 
-    const res: any = await this.request.send(GAME_RECORD_CARD_API)
+    const { response: res } = await this.request.send(GAME_RECORD_CARD_API)
 
-    return res.data.list as IGameRecordCard
+    return (res as any).data.list as IGameRecordCard
   }
   /* c8 ignore stop */
 }

@@ -65,13 +65,26 @@ export class GenshinRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(GENSHIN_RECORD_INDEX_API)
+    const {
+      response: res,
+      headers,
+      body,
+      params,
+    } = await this.request.send(GENSHIN_RECORD_INDEX_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -101,13 +114,26 @@ export class GenshinRecordModule {
       })
       .setDs(true)
 
-    const res = await this.request.send(GENSHIN_RECORD_CHARACTER_API, 'POST')
+    const {
+      response: res,
+      headers,
+      body,
+      params,
+    } = await this.request.send(GENSHIN_RECORD_CHARACTER_API, 'POST')
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -139,16 +165,26 @@ export class GenshinRecordModule {
       })
       .setDs()
 
-    const res = await this.request.send(
-      GENSHIN_RECORD_AVATAR_BASIC_INFO_API,
-      'POST',
-    )
+    const {
+      response: res,
+      headers,
+      body,
+      params,
+    } = await this.request.send(GENSHIN_RECORD_AVATAR_BASIC_INFO_API, 'POST')
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -186,13 +222,26 @@ export class GenshinRecordModule {
       })
       .setDs()
 
-    const res = await this.request.send(GENSHIN_RECORD_SPIRAL_ABYSS_API)
+    const {
+      response: res,
+      headers,
+      body,
+      params,
+    } = await this.request.send(GENSHIN_RECORD_SPIRAL_ABYSS_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 
@@ -219,13 +268,26 @@ export class GenshinRecordModule {
       })
       .setDs()
 
-    const res = await this.request.send(GENSHIN_RECORD_DAILY_NOTE_API)
+    const {
+      response: res,
+      headers,
+      body,
+      params,
+    } = await this.request.send(GENSHIN_RECORD_DAILY_NOTE_API)
 
     if (res.retcode !== 0) {
       throw new HoyoAPIError(
         res.message ??
           'Failed to retrieve data, please double-check the provided UID.',
         res.retcode,
+        {
+          response: res,
+          request: {
+            body,
+            headers,
+            params,
+          },
+        },
       )
     }
 

@@ -8,6 +8,8 @@ export interface HTTPServerResponse {
     message?: string
   }
   headers: HTTPHeaders
+  body: HTTPBody
+  params: HTTPQueryParams
 }
 
 export interface HTTPResponse {
@@ -38,7 +40,7 @@ export interface Dict<T> {
 /**
  * Represents the type that can be used for the parameters of a request.
  */
-export type HTTPQueryParams = Dict<number | string | string[] | null>
+export type HTTPQueryParams = Dict<string | number | string[] | null>
 
 /**
  * Represents the type that can be used for the headers of a request.

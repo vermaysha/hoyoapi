@@ -5,7 +5,6 @@ import type {
   HTTPBody,
   HTTPHeaders,
   HTTPQueryParams,
-  HTTPResponse,
   HTTPServerResponse,
 } from './request.inteface'
 import { HoyoAPIError } from '../error'
@@ -67,6 +66,12 @@ export class HTTPRequest {
    * The number of request attempts made.
    */
   private retries = 1
+
+  public http?: {
+    response?: object
+    request?: object
+    code?: number
+  }
 
   constructor(cookie?: string) {
     if (cookie) this.headers.Cookie = cookie
@@ -143,7 +148,7 @@ export class HTTPRequest {
     url: string,
     method: 'GET' | 'POST' = 'GET',
     ttl = 60,
-  ): Promise<HTTPResponse> {
+  ): Promise<HTTPServerResponse> {
     // Internal NodeJS Fetch
     const fetch = (url: string, method: string) => {
       return new Promise<HTTPServerResponse>((resolve, reject) => {
@@ -187,6 +192,14 @@ export class HTTPRequest {
               new HoyoAPIError(
                 `HTTP ${res.statusCode}: ${res.statusMessage}`,
                 res.statusCode,
+                {
+                  response: res.statusMessage,
+                  request: {
+                    params: this.params,
+                    body: this.body,
+                    headers: this.headers,
+                  },
+                },
               ),
             )
           }
@@ -230,6 +243,8 @@ export class HTTPRequest {
                     message: res.statusMessage,
                   },
                   headers: res.headers,
+                  body: this.body,
+                  params: this.params,
                 })
               } catch (error) {
                 reject(
@@ -274,7 +289,7 @@ export class HTTPRequest {
 
     /* c8 ignore start */
     if (cachedResult) {
-      return cachedResult as HTTPResponse
+      return cachedResult as HTTPServerResponse
     }
     /* c8 ignore stop */
 
@@ -283,8 +298,6 @@ export class HTTPRequest {
     }
 
     const req = await fetch(url, method)
-
-    const result = req.response
 
     /* c8 ignore start */
     if (
@@ -301,7 +314,7 @@ export class HTTPRequest {
     this.body = {}
     this.params = {}
 
-    this.cache.set(cacheKey, result, ttl)
-    return result
+    this.cache.set(cacheKey, req, ttl)
+    return req
   }
 }
