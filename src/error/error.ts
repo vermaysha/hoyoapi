@@ -1,3 +1,5 @@
+import { IHTTPError } from './error.inteface'
+
 /**
  * Represents an error that can be thrown during interactions with the Hoyolab API.
  *
@@ -16,6 +18,11 @@ export class HoyoAPIError extends Error {
   public readonly message: string
 
   /**
+   * The HTTP object
+   */
+  public readonly http?: IHTTPError
+
+  /**
    * The error code
    */
   public readonly code?: number
@@ -25,7 +32,7 @@ export class HoyoAPIError extends Error {
    *
    * @param message The message to associate with this error.
    */
-  constructor(message: string, code?: number) {
+  constructor(message: string, code?: number, http?: IHTTPError) {
     super(message)
 
     /**
@@ -39,6 +46,8 @@ export class HoyoAPIError extends Error {
     this.message = message
 
     this.code = code
+
+    this.http = http
 
     // Capture the stack trace of this error instance.
     Error.captureStackTrace(this, this.constructor)
