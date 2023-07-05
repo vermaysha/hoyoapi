@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.92% </span>
+                <span class="strong">24.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/156</span>
+                <span class='fraction'>42/169</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.92% </span>
+                <span class="strong">24.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>42/156</span>
+                <span class='fraction'>42/169</span>
             </div>
         
             
@@ -219,7 +219,20 @@
 <a name='L154'></a><a href='#L154'>154</a>
 <a name='L155'></a><a href='#L155'>155</a>
 <a name='L156'></a><a href='#L156'>156</a>
-<a name='L157'></a><a href='#L157'>157</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -322,12 +335,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -475,7 +501,12 @@ import {
 <span class="cstat-no" title="statement not covered" >      uid: this.cookie.ltuid,</span>
 <span class="cstat-no" title="statement not covered" >      sLangKey: this.cookie.mi18nLang,</span>
 <span class="cstat-no" title="statement not covered" >    })</span>
-<span class="cstat-no" title="statement not covered" >    const res = await this.request.send(USER_GAMES_LIST)</span>
+<span class="cstat-no" title="statement not covered" >    const {</span>
+<span class="cstat-no" title="statement not covered" >      response: res,</span>
+<span class="cstat-no" title="statement not covered" >      params,</span>
+<span class="cstat-no" title="statement not covered" >      body,</span>
+<span class="cstat-no" title="statement not covered" >      headers,</span>
+<span class="cstat-no" title="statement not covered" >    } = await this.request.send(USER_GAMES_LIST)</span>
 <span class="cstat-no" title="statement not covered" >    const data = res.data as IGamesList</span>
 <span class="cstat-no" title="statement not covered" ></span>
     /* c8 ignore next 5 */
@@ -483,7 +514,15 @@ import {
       throw new HoyoAPIError(
         res.message ?? 'There is no game account on this hoyolab account !',
         res.retcode,
-      )
+        {
+<span class="cstat-no" title="statement not covered" >          response: res,</span>
+<span class="cstat-no" title="statement not covered" >          request: {</span>
+<span class="cstat-no" title="statement not covered" >            body,</span>
+<span class="cstat-no" title="statement not covered" >            headers,</span>
+<span class="cstat-no" title="statement not covered" >            params,</span>
+<span class="cstat-no" title="statement not covered" >          },</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >      )</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    return data.list as IGame[]</span>
@@ -525,9 +564,9 @@ import {
         this.cookie.ltuid || this.cookie.accountId || this.cookie.accountIdV2,
     })
 &nbsp;
-    const res: any = await this.request.send(GAME_RECORD_CARD_API)
+    const { response: res } = await this.request.send(GAME_RECORD_CARD_API)
 &nbsp;
-    return res.data.list as IGameRecordCard
+    return (res as any).data.list as IGameRecordCard
   }
   /* c8 ignore stop */
 <span class="cstat-no" title="statement not covered" >}</span>
@@ -538,7 +577,7 @@ import {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-05T02:43:52.175Z
+                at 2023-07-05T02:58:43.190Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
