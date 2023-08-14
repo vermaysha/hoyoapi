@@ -1,8 +1,8 @@
 import { IHoyolabOptions } from '../hoyolab'
 
 export enum HsrRegion {
-  USA = 'prod_official_asia',
-  EUROPE = 'prod_official_euro',
+  USA = 'prod_official_usa',
+  EUROPE = 'prod_official_eur',
   ASIA = 'prod_official_asia',
   CHINA_TAIWAN = 'prod_official_cht',
 }
