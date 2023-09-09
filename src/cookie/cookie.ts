@@ -76,11 +76,11 @@ export class Cookie {
    * Converts an `ICookie` object into a cookie string.
    * @param {ICookie} cookie - The `ICookie` object to convert.
    * @returns {string} A string representing the cookie.
-   * @throws {HoyoAPIError} If the `ltuid` or `ltoken` key is missing in the `ICookie` object.
+   * @throws {HoyoAPIError} If the `ltuidV2` or `ltokenV2` key is missing in the `ICookie` object.
    */
   static parseCookie(cookie: ICookie): string {
     if (!cookie.accountId) {
-      cookie.accountId = cookie.ltuid
+      cookie.accountId = cookie.ltuidV2
     }
 
     const cookies = Object.entries(cookie)

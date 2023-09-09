@@ -38,7 +38,7 @@ export class Hoyolab {
    *
    * @constructor
    * @param {IHoyolabOptions} options - The options to initialize the `Hoyolab` instance.
-   * @throws {HoyoAPIError} If `ltuid` or `ltoken` keys are missing in the `ICookie` object.
+   * @throws {HoyoAPIError} If `ltuidV2` or `ltokenV2` keys are missing in the `ICookie` object.
    *
    * @remarks
    * Because CookieTokenV2 has a short expiration time and cannot be refreshed so far.
@@ -105,7 +105,7 @@ export class Hoyolab {
     }
 
     this.request.setQueryParams({
-      uid: this.cookie.ltuid,
+      uid: this.cookie.ltuidV2,
       sLangKey: this.cookie.mi18nLang,
     })
     const {
@@ -173,7 +173,7 @@ export class Hoyolab {
     /* c8 ignore start */
     this.request.setQueryParams({
       uid:
-        this.cookie.ltuid || this.cookie.accountId || this.cookie.accountIdV2,
+        this.cookie.ltuidV2 || this.cookie.accountId || this.cookie.accountIdV2,
     })
 
     const { response: res } = await this.request.send(GAME_RECORD_CARD_API)

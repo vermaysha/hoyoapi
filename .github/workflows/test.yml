@@ -39,7 +39,7 @@ jobs:
         with:
           envkey_DEBUG: true
           envkey_LTOKEN: ${{ secrets.LTOKEN }}
-          envkey_LTUID: ${{ secrets.LTUID }}
+          envkey_LTUID_V2: ${{ secrets.LTUID_V2 }}
           envkey_ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           envkey_COOKIE_TOKEN: ${{ secrets.COOKIE_TOKEN }}
           envkey_ACCOUNT_ID_V2: ${{ secrets.ACCOUNT_ID_V2 }}
