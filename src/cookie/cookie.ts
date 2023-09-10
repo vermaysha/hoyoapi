@@ -21,8 +21,8 @@ export class Cookie {
     const cookies: Map<string, any> = new Map()
 
     const keys: string[] = [
-      'ltoken',
-      'ltuid',
+      'ltoken_v2',
+      'ltuid_v2',
       'account_id',
       'cookie_token',
       'account_id_v2',
@@ -44,28 +44,28 @@ export class Cookie {
 
       cookies.set(key, val)
 
-      if (['ltuid', 'account_id', 'account_id_v2'].includes(cookieSplited[0])) {
+      if (['ltuid_v2', 'account_id', 'account_id_v2'].includes(cookieSplited[0])) {
         cookies.set(key, parseInt(cookies.get(key), 10))
       } else if (cookieSplited[0] === 'mi18nLang') {
         cookies.set(key, Language.parseLang(cookies.get(key)))
       }
     })
 
-    const ltuid = cookies.get('ltuid')
+    const ltuid = cookies.get('ltuidV2')
     const accountId = cookies.get('accountId')
     const accountIdV2 = cookies.get('accountIdV2')
 
     if (ltuid && !accountId) {
       cookies.set('accountId', ltuid)
     } else if (!ltuid && accountId) {
-      cookies.set('ltuid', accountId)
+      cookies.set('ltuidV2', accountId)
     }
 
     if (!accountIdV2 && (accountId || ltuid) !== null) {
       cookies.set('accountIdV2', accountId || ltuid)
     }
 
-    if (!cookies.get('ltoken') || !cookies.get('ltuid')) {
+    if (!cookies.get('ltokenV2') || !cookies.get('ltuidV2')) {
       throw new HoyoAPIError('Cookie key ltuid or ltoken doesnt exist !')
     }
 
@@ -76,11 +76,11 @@ export class Cookie {
    * Converts an `ICookie` object into a cookie string.
    * @param {ICookie} cookie - The `ICookie` object to convert.
    * @returns {string} A string representing the cookie.
-   * @throws {HoyoAPIError} If the `ltuid` or `ltoken` key is missing in the `ICookie` object.
+   * @throws {HoyoAPIError} If the `ltuidV2` or `ltokenV2` key is missing in the `ICookie` object.
    */
   static parseCookie(cookie: ICookie): string {
     if (!cookie.accountId) {
-      cookie.accountId = cookie.ltuid
+      cookie.accountId = cookie.ltuidV2
     }
 
     const cookies = Object.entries(cookie)

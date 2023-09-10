@@ -3,8 +3,8 @@ import { Cookie, HoyoAPIError } from '../src'
 
 test('parseCookie return should be valid', (t) => {
   const cookie = Cookie.parseCookie({
-    ltoken: 'ltoken',
-    ltuid: 1,
+    ltokenV2: 'ltoken_v2',
+    ltuidV2: 1,
     cookieToken: 'cookieToken',
     mi18nLang: 'id-id',
     cookieTokenV2: 'cookieTokenV2',
@@ -12,18 +12,18 @@ test('parseCookie return should be valid', (t) => {
 
   t.deepEqual(
     cookie,
-    'ltoken=ltoken; ltuid=1; cookie_token=cookieToken; mi18nLang=id-id; cookie_token_v2=cookieTokenV2; account_id=1',
+    'ltoken_v2=ltoken; ltuid_v2=1; cookie_token=cookieToken; mi18nLang=id-id; cookie_token_v2=cookieTokenV2; account_id=1',
   )
 })
 
 test('parseCookieString return should be valid', (t) => {
   const cookieString = Cookie.parseCookieString(
-    'ltoken=ltoken; ltuid=1; cookie_token=cookieToken; mi18nLang=id-id; cookie_token_v2=cookieTokenV2; account_id=1',
+    'ltoken_v2=ltokenV2; ltuid_v2=1; cookie_token=cookieToken; mi18nLang=id-id; cookie_token_v2=cookieTokenV2; account_id=1',
   )
 
   t.deepEqual(cookieString, {
-    ltoken: 'ltoken',
-    ltuid: 1,
+    ltokenV2: 'ltokenV2',
+    ltuidV2: 1,
     cookieToken: 'cookieToken',
     mi18nLang: 'id-id',
     cookieTokenV2: 'cookieTokenV2',
@@ -34,12 +34,12 @@ test('parseCookieString return should be valid', (t) => {
 
 test('parseCookieString return should be valid when account_id is null', (t) => {
   const cookieString = Cookie.parseCookieString(
-    'ltoken=ltoken; ltuid=1; cookie_token=cookieToken; cookie_token_v2=cookieTokenV2; mi18nLang=id-id',
+    'ltoken_v2=ltoken; ltuid_v2=1; cookie_token=cookieToken; cookie_token_v2=cookieTokenV2; mi18nLang=id-id',
   )
 
   t.deepEqual(cookieString, {
-    ltoken: 'ltoken',
-    ltuid: 1,
+    ltokenV2: 'ltokenV2',
+    ltuidV2: 1,
     cookieToken: 'cookieToken',
     mi18nLang: 'id-id',
     cookieTokenV2: 'cookieTokenV2',
@@ -48,13 +48,13 @@ test('parseCookieString return should be valid when account_id is null', (t) => 
   })
 })
 
-test('parseCookieString return should be valid when ltuid is null', (t) => {
+test('parseCookieString return should be valid when ltuidV2 is null', (t) => {
   const cookieString = Cookie.parseCookieString(
-    'ltoken=ltoken; account_id=1; cookie_token_v2=cookieTokenV2; cookie_token=cookieToken; mi18nLang=id-id',
+    'ltoken_v2=ltokenV2; account_id=1; cookie_token_v2=cookieTokenV2; cookie_token=cookieToken; mi18nLang=id-id',
   )
 
   t.deepEqual(cookieString, {
-    ltoken: 'ltoken',
+    ltokenV2: 'ltokenV2',
     ltuid: 1,
     cookieToken: 'cookieToken',
     mi18nLang: 'id-id',

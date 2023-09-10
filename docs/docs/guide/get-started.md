@@ -32,7 +32,7 @@ $ yarn add hoyoapi
 2. Type `java` in the address bar followed by the script down below.
 3. ```javascript
    script: (function() {
-     if (document.cookie.includes('ltoken') && document.cookie.includes('ltuid')) {
+     if (document.cookie.includes('ltoken_v2') && document.cookie.includes('ltuid_v2')) {
        const input = document.createElement('input');
        input.value = document.cookie;
        document.body.appendChild(input);
