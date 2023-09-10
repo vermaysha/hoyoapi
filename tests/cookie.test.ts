@@ -50,7 +50,7 @@ test('parseCookieString return should be valid when account_id is null', (t) => 
 
 test('parseCookieString return should be valid when ltuidV2 is null', (t) => {
   const cookieString = Cookie.parseCookieString(
-    'ltoken_v2=ltoken; account_id=1; cookie_token_v2=cookieTokenV2; cookie_token=cookieToken; mi18nLang=id-id',
+    'ltoken_v2=ltokenV2; account_id=1; cookie_token_v2=cookieTokenV2; cookie_token=cookieToken; mi18nLang=id-id',
   )
 
   t.deepEqual(cookieString, {
